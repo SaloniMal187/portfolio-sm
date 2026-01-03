@@ -8,6 +8,25 @@
   <meta name="description" content="">
   <meta name="keywords" content="">
 
+  <style>
+  /* Limits the height of the slider container */
+  .portfolio-details-slider {
+    max-height: 65vh; /* Adjust this number (60-70) to your preference */
+    overflow: hidden;
+    background-color: #000; /* Adds a black background for letterboxing */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Ensures images and videos scale to fit the height limit */
+  .portfolio-details-slider img, 
+  .portfolio-details-slider video {
+    max-height: 65vh !important;
+    width: auto !important; /* Prevents horizontal stretching */
+    object-fit: contain; /* Keeps the entire image visible */
+  }
+</style>
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -104,7 +123,7 @@
           <div class="swiper-wrapper align-items-center">
 
             <div class="swiper-slide">
-              <video width="100%" height="auto" autoplay loop muted playsinline>
+              <video class="img-fluid" autoplay loop muted playsinline style="max-height: 65vh; width: auto;">
               <source src="assets/img/portfolio/Star0.mp4" type="video/mp4">
               </video>
             </div>
