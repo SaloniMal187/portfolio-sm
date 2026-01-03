@@ -8,6 +8,31 @@
   <meta name="description" content="">
   <meta name="keywords" content="">
 
+  <style>
+  /* 1. Set the slider background to white */
+  .portfolio-details-slider {
+    background-color: #ffffff !important;
+    max-height: 70vh; /* Keeps it on one screen as requested earlier */
+    overflow: hidden;
+  }
+
+  /* 2. Center the content inside each slide */
+  .swiper-slide {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background-color: #ffffff !important;
+  }
+
+  /* 3. Ensure images/videos don't overflow and stay centered */
+  .swiper-slide img, 
+  .swiper-slide video {
+    max-height: 70vh !important;
+    width: auto !important;
+    max-width: 100%;
+    object-fit: contain; /* Prevents cropping */
+  }
+</style>
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
