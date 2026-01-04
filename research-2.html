@@ -8,6 +8,31 @@
   <meta name="description" content="">
   <meta name="keywords" content="">
 
+  <style>
+  /* 1. Set the slider background to white */
+  .portfolio-details-slider {
+    background-color: #ffffff !important;
+    max-height: 70vh; /* Keeps it on one screen as requested earlier */
+    overflow: hidden;
+  }
+
+  /* 2. Center the content inside each slide */
+  .swiper-slide {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background-color: #ffffff !important;
+  }
+
+  /* 3. Ensure images/videos don't overflow and stay centered */
+  .swiper-slide img, 
+  .swiper-slide video {
+    max-height: 70vh !important;
+    width: auto !important;
+    max-width: 100%;
+    object-fit: contain; /* Prevents cropping */
+  }
+</style>
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -49,11 +74,12 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-            <li><a href="../">Home</a></li>
-            <li><a href="../#about">About</a></li>
-            <li><a href="../#portfolio">Portfolio</a></li>
-            
-            <li><a href="../#contact">Contact</a></li>
+          <li><a href="index.html#hero" class="active">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#portfolio">Portfolio</a></li>
+          <li><a href="index.html#engagement">Engagement</a></li>
+          <li><a href="index.html#impact">Impact</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -142,34 +168,42 @@
   <footer id="footer" class="footer dark-background">
 
     <div class="container footer-top">
-        <div class="row gy-4">
-          <div class="col-lg-5 col-md-12 footer-about">
-            <a href="index.html" class="logo d-flex align-items-center">
-              <img src="assets/img/Frame 2.png" class="img-fluid" alt="">
-            </a>
-            <p><strong>Engineering the future, where the sky is no longer the limit.</strong></p>
-            <div class="social-links d-flex mt-4">
-              <a href="https://www.researchgate.net/profile/Saloni-Malviya"><img src="assets/img/researchgate.svg" alt=""></i></a>
-              <a href="https://www.linkedin.com/in/saloni-malviya-815b79241/"><i class="bi bi-linkedin"></i></a>
-            </div>
+      <div class="row gy-4">
+        <div class="col-lg-5 col-md-12 footer-about">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <img src="assets/img/Frame 2.png" class="img-fluid" alt="">
+          </a>
+          <p><strong>Engineering the future, where the sky is no longer the limit.</strong></p>
+          <div class="social-links d-flex mt-4">
+            <a href="https://www.researchgate.net/profile/Saloni-Malviya">
+          <img src="assets/img/researchgate.svg" alt="ResearchGate" style="height: 24px;">
+        </a>
+        <a href="https://www.linkedin.com/in/saloni-malviya-815b79241/">
+          <i class="bi bi-linkedin"></i>
+        </a>
+        <a href="https://scholar.google.com/citations?user=07LBAHoAAAAJ&hl=en&oi=ao">
+          <img src="assets/img/gs.png" alt="Google Scholar" style="height: 24px;">
+        </a>
           </div>
-  
-          <div class="col-lg-2 col-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#scroll-about-me">About me</a></li>
-            </ul>
-          </div>
-  
-          <div class="col-lg-2 col-6 footer-links">
-            <h4>Site Content</h4>
-            <ul>
-              <li><a href="../#scroll-technical-skills">Technical Skills</a></li>
-              <li><a href="../#portfolio">Portfolio</a></li>
-              <li><a href="../#contact">Contact</a></li>
-            </ul>
-          </div>
+        </div>
+<div class="col-lg-2 col-6 footer-links">
+    <h4>Useful Links</h4>
+  <ul>
+    <li><a href="index.html#hero">Home</a></li>
+    <li><a href="index.html#about">About me</a></li>
+  </ul>
+</div>
+
+<div class="col-lg-2 col-6 footer-links">
+  <h4>Site Content</h4>
+  <ul>
+    <li><a href="index.html#technical-skills">Technical Skills</a></li>
+    <li><a href="index.html#portfolio">Portfolio</a></li>
+    <li><a href="index.html#engagement">Engagement</a></li>
+    <li><a href="index.html#impact">Impact</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</div>
 
         <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
           <h4>Contact Me</h4>
