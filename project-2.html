@@ -7,7 +7,22 @@
   <title>Portfolio Details - Remember Bootstrap Template</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
+    <style>
+  /* Limits the height of the slider container */
+  .portfolio-details-slider {
+    max-height: 70vh; /* 70% of the screen height */
+    overflow: hidden;
+    background-color: #ffffff; /* Ensures the background is white */
+  }
 
+  /* Forces images within the swiper to scale down */
+  .swiper-slide img {
+    max-height: 70vh !important;
+    width: auto !important; /* Maintains the original aspect ratio */
+    display: block;
+    margin: 0 auto; /* Centers the image horizontally */
+    object-fit: contain; /* Ensures the entire image is visible without cropping */
+  }
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -49,11 +64,12 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-            <li><a href="../">Home</a></li>
-            <li><a href="../#about">About</a></li>
-            <li><a href="../#portfolio">Portfolio</a></li>
-            
-            <li><a href="../#contact">Contact</a></li>
+          <li><a href="index.html#hero" class="active">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#portfolio">Portfolio</a></li>
+          <li><a href="index.html#engagement">Engagement</a></li>
+          <li><a href="index.html#impact">Impact</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -104,9 +120,12 @@
           <div class="swiper-wrapper align-items-center">
 
             <div class="swiper-slide">
-              <img src="assets/img/portfolio/project-1.jpg" alt="">
+              <img src="assets/img/portfolio/m1.png" alt="">
             </div>
 
+            <div class="swiper-slide">
+              <img src="assets/img/portfolio/m2.png" alt="">
+            </div>
           </div>
         </div>
 
@@ -166,23 +185,23 @@ MRAC design successfully stabilized the system, achieving a settling time of 28 
         </div>
 
         <div class="col-lg-2 col-6 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#scroll-about-me">About me</a></li>
-          </ul>
-        </div>
+    <h4>Useful Links</h4>
+  <ul>
+    <li><a href="index.html#hero">Home</a></li>
+    <li><a href="index.html#about">About me</a></li>
+  </ul>
+</div>
 
-        <div class="col-lg-2 col-6 footer-links">
-          <h4>Site Content</h4>
-          <ul>
-            <li><a href="#scroll-technical-skills">Technical Skills</a></li>
-            <li><a href="#scroll-portfolio">Portfolio</a></li>
-            <li><a href="#scroll-engagement">Engagement</a></li>
-            <li><a href="#scroll-impact">Impact</a></li>
-            <li><a href="#scroll-contact">Contact</a></li>
-          </ul>
-        </div>
+<div class="col-lg-2 col-6 footer-links">
+  <h4>Site Content</h4>
+  <ul>
+    <li><a href="index.html#technical-skills">Technical Skills</a></li>
+    <li><a href="index.html#portfolio">Portfolio</a></li>
+    <li><a href="index.html#engagement">Engagement</a></li>
+    <li><a href="index.html#impact">Impact</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</div>
 
 
         <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
