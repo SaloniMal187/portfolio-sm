@@ -1199,10 +1199,11 @@ section,
   transition: 0.3s;
   position: relative;
   z-index: 1;
-  /* Add these lines below */
   width: 100%;
-  aspect-ratio: 16 / 9; /* Forces all images to the same shape */
-  object-fit: cover;    /* Ensures images fill the space without stretching */
+  aspect-ratio: 16 / 9; /* Keeps the tile shape consistent */
+  object-fit: contain;  /* Shows the WHOLE image */
+  background-color: #f8f9fa; /* Fills empty space with a clean light gray */
+  padding: 10px;        /* Optional: adds a small 'frame' around your diagram */
 }
 
 .portfolio .portfolio-content .portfolio-info {
