@@ -1190,12 +1190,19 @@ section,
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
   height: 100%;
   overflow: hidden;
+  /* Add these lines */
+  display: flex;
+  flex-direction: column;
 }
 
 .portfolio .portfolio-content img {
   transition: 0.3s;
   position: relative;
   z-index: 1;
+  /* Add these lines below */
+  width: 100%;
+  aspect-ratio: 16 / 9; /* Forces all images to the same shape */
+  object-fit: cover;    /* Ensures images fill the space without stretching */
 }
 
 .portfolio .portfolio-content .portfolio-info {
@@ -1204,6 +1211,8 @@ section,
   padding: 25px 20px;
   position: relative;
   z-index: 2;
+  /* Add this line */
+  min-height: 120px; /* Adjust this value until your longest title fits comfortably */
 }
 
 .portfolio .portfolio-content .portfolio-info h4 {
