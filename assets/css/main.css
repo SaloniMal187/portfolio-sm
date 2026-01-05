@@ -1201,9 +1201,7 @@ section,
   z-index: 1;
   width: 100%;
   aspect-ratio: 16 / 9; /* Keeps the tile shape consistent */
-  object-fit: contain;  /* Shows the WHOLE image */
-  background-color: #f8f9fa; /* Fills empty space with a clean light gray */
-  padding: 10px;        /* Optional: adds a small 'frame' around your diagram */
+  object-fit: cover;  /* Shows the WHOLE image */
 }
 
 .portfolio .portfolio-content .portfolio-info {
