@@ -24,50 +24,59 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <style>
-  /* Gallery Item Container */
-.gallery-item {
+  /* Container for the About Me project cards */
+.about-project-card {
   position: relative;
   overflow: hidden;
-  cursor: pointer;
-  transition: all 0.4s ease-in-out;
-}
-
-/* Image Zoom Effect */
-.gallery-item img {
-  transition: transform 0.4s ease-in-out;
-}
-
-.gallery-item:hover img {
-  transform: scale(1.1); /* Slight zoom in */
-}
-
-/* Dark Overlay that appears on hover */
-.gallery-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 119, 181, 0.7); /* LinkedIn Blue with transparency */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  transition: opacity 0.4s ease-in-out;
   border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.gallery-item:hover .gallery-overlay {
-  opacity: 1;
+.about-project-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* Makes them stylish squares */
+  object-fit: cover;
+  transition: transform 0.5s ease;
 }
 
-/* Text inside the overlay */
-.gallery-info {
-  text-align: center;
+/* The creative caption overlay */
+.card-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  padding: 20px 15px;
+  opacity: 0; /* Hidden by default */
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+}
+
+.card-caption span {
   color: #fff;
+  font-size: 0.85rem;
+  font-weight: 500;
+  font-style: italic;
+  display: block;
 }
 
-.gallery-info h4 {
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-bottom: 5px;
+/* Hover Effects */
+.about-project-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
+}
+
+.about-project-card:hover img {
+  transform: scale(1.1);
+}
+
+.about-project-card:hover .card-caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-card-link {
+  text-decoration: none !important;
 }
   </style>
   <!-- Main CSS File -->
@@ -147,52 +156,52 @@
             </p>
           </div>
 
+          <div class="row mt-5 g-4">
+  <div class="col-12 mb-2" data-aos="fade-up">
+    <p class="text-secondary" style="font-size: 0.95rem; letter-spacing: 0.5px;">
+      <em>Ready to see these theories in flight? Click a project to explore the math behind the movement.</em>
+    </p>
+  </div>
+
+  <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+    <a href="#scroll-portfolio" class="project-card-link">
+      <div class="about-project-card">
+        <img src="assets/img/portfolio/uam-blueprint.jpg" class="img-fluid rounded-4 shadow" alt="UAM Project">
+        <div class="card-caption">
+          <span>How do we stabilize urban flight?</span>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+    <a href="#scroll-portfolio" class="project-card-link">
+      <div class="about-project-card">
+        <img src="assets/img/portfolio/m1.png" class="img-fluid rounded-4 shadow" alt="MRAC Project">
+        <div class="card-caption">
+          <span>Can adaptive laws perfect precision?</span>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
+    <a href="#scroll-portfolio" class="project-card-link">
+      <div class="about-project-card">
+        <img src="assets/img/portfolio/star1.png" class="img-fluid rounded-4 shadow" alt="STAR Lab">
+        <div class="card-caption">
+          <span>What defines mission-critical hardware?</span>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
         </div>
 
       </div>
 
     </section><!-- /About Section -->
 
-    <section id="project-gallery" class="portfolio section">
-
-  <div class="container section-title" data-aos="fade-up">
-    <h2>Project Highlights</h2>
-    <p>Click an image to explore the technical details below.</p>
-  </div>
-
-  <div class="container">
-    <div class="row gy-4">
-
-      <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100">
-        <a href="#scroll-portfolio-1"> <div class="gallery-item">
-            <img src="assets/img/gallery/star1.png" class="img-fluid rounded-4" alt="Static Test Pad">
-            <div class="gallery-overlay">
-              <div class="gallery-info">
-                <h4>Static Test Pad</h4>
-                <p>System Design</p>
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
-        <a href="#scroll-portfolio-2">
-          <div class="gallery-item">
-            <img src="assets/img/gallery/d1.png" class="img-fluid rounded-4" alt="UAM Control">
-            <div class="gallery-overlay">
-              <div class="gallery-info">
-                <h4>UAM Control</h4>
-                <p>NMPC Implementation</p>
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      </div>
-  </div>
-</section>
     
     <!-- Why Us Section -->
     <section id="why-us" class="why-us section">
