@@ -23,10 +23,57 @@
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <style>
+  /* Gallery Item Container */
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+}
 
+/* Image Zoom Effect */
+.gallery-item img {
+  transition: transform 0.4s ease-in-out;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.1); /* Slight zoom in */
+}
+
+/* Dark Overlay that appears on hover */
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 119, 181, 0.7); /* LinkedIn Blue with transparency */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+  border-radius: 16px;
+}
+
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+/* Text inside the overlay */
+.gallery-info {
+  text-align: center;
+  color: #fff;
+}
+
+.gallery-info h4 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+  </style>
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
+  
   <!-- =======================================================
   * Template Name: Remember
   * Template URL: https://bootstrapmade.com/remember-free-multipurpose-bootstrap-template/
@@ -106,6 +153,47 @@
 
     </section><!-- /About Section -->
 
+    <section id="project-gallery" class="portfolio section">
+
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Project Highlights</h2>
+    <p>Click an image to explore the technical details below.</p>
+  </div>
+
+  <div class="container">
+    <div class="row gy-4">
+
+      <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+        <a href="#scroll-portfolio-1"> <div class="gallery-item">
+            <img src="assets/img/gallery/star1.png" class="img-fluid rounded-4" alt="Static Test Pad">
+            <div class="gallery-overlay">
+              <div class="gallery-info">
+                <h4>Static Test Pad</h4>
+                <p>System Design</p>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+        <a href="#scroll-portfolio-2">
+          <div class="gallery-item">
+            <img src="assets/img/gallery/d1.png" class="img-fluid rounded-4" alt="UAM Control">
+            <div class="gallery-overlay">
+              <div class="gallery-info">
+                <h4>UAM Control</h4>
+                <p>NMPC Implementation</p>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      </div>
+  </div>
+</section>
+    
     <!-- Why Us Section -->
     <section id="why-us" class="why-us section">
 
