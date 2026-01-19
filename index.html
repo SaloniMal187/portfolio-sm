@@ -24,31 +24,30 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <style>
-  /* Keeps the images crisp and aligned */
-.custom-photo-layout {
-  padding-left: 15px;
+    .custom-photo-layout {
+  padding-left: 10px;
 }
 
 .layout-item {
   position: relative;
   display: block;
   overflow: hidden;
-  border-radius: 8px;
-  border: 1px solid #eee;
+  border-radius: 12px;
+  text-decoration: none !important;
 }
 
+/* Increased heights to prevent clipping */
 .layout-item img {
   width: 100%;
   object-fit: cover;
-  height: 110px; /* Reduced to fit better next to the para */
-  transition: transform 0.3s ease;
+  height: 150px; /* Increased from 120px */
+  transition: transform 0.4s ease;
 }
 
 .small-item img {
-  height: 70px; /* Smaller height for the bottom pair */
+  height: 100px; /* Increased from 75px */
 }
 
-/* Eye-catching hover effect */
 .layout-caption {
   position: absolute;
   inset: 0;
@@ -58,10 +57,15 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 5px;
-  font-size: 0.7rem;
+  padding: 10px;
+  font-size: 0.8rem;
   opacity: 0;
   transition: opacity 0.3s ease;
+}
+
+.layout-caption.mini {
+  font-size: 0.65rem;
+  line-height: 1.2;
 }
 
 .layout-item:hover .layout-caption { opacity: 1; }
