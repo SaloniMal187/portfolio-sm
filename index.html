@@ -24,59 +24,53 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <style>
-  /* Container for the About Me project cards */
-.about-project-card {
+  /* Container for the stack */
+.project-stack {
   position: relative;
-  overflow: hidden;
-  border-radius: 16px;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.about-project-card img {
+  height: 220px; /* Adjust height based on image size */
   width: 100%;
-  aspect-ratio: 1 / 1; /* Makes them stylish squares */
-  object-fit: cover;
-  transition: transform 0.5s ease;
+  margin-top: 10px;
 }
 
-/* The creative caption overlay */
-.card-caption {
+/* Base style for each photo card */
+.stack-item {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-  padding: 20px 15px;
-  opacity: 0; /* Hidden by default */
-  transform: translateY(20px);
+  width: 160px; /* Small size as requested */
   transition: all 0.4s ease;
-}
-
-.card-caption span {
-  color: #fff;
-  font-size: 0.85rem;
-  font-weight: 500;
-  font-style: italic;
-  display: block;
-}
-
-/* Hover Effects */
-.about-project-card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
-}
-
-.about-project-card:hover img {
-  transform: scale(1.1);
-}
-
-.about-project-card:hover .card-caption {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.project-card-link {
   text-decoration: none !important;
+}
+
+.stack-card {
+  background: white;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.stack-caption {
+  font-size: 0.65rem;
+  color: #555;
+  font-style: italic;
+  margin-top: 5px;
+  text-align: center;
+  line-height: 1.1;
+}
+
+/* Individual positions to create the "stack" look */
+.item-1 { z-index: 3; right: 0; top: 0; transform: rotate(3deg); }
+.item-2 { z-index: 2; right: 40px; top: 15px; transform: rotate(-5deg); }
+.item-3 { z-index: 1; right: 80px; top: 30px; transform: rotate(-2deg); }
+
+/* Hover effect: Bring the hovered card to the front and make it pop */
+.stack-item:hover {
+  z-index: 10;
+  transform: scale(1.15) rotate(0deg);
+  cursor: pointer;
+}
+
+.stack-item:hover .stack-card {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  border-color: #0077B5; /* LinkedIn Blue border on hover */
 }
   </style>
   <!-- Main CSS File -->
@@ -156,46 +150,35 @@
             </p>
           </div>
 
-          <div class="row mt-5 g-4">
-  <div class="col-12 mb-2" data-aos="fade-up">
-    <p class="text-secondary" style="font-size: 0.95rem; letter-spacing: 0.5px;">
-      <em>Ready to see these theories in flight? Click a project to explore the math behind the movement.</em>
-    </p>
-  </div>
-
-  <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
-    <a href="#scroll-portfolio" class="project-card-link">
-      <div class="about-project-card">
-        <img src="assets/img/portfolio/uam-blueprint.jpg" class="img-fluid rounded-4 shadow" alt="UAM Project">
-        <div class="card-caption">
-          <span>How do we stabilize urban flight?</span>
+          <div class="row justify-content-end mt-3">
+  <div class="col-lg-5 col-md-7">
+    <div class="project-stack">
+      
+      <a href="#scroll-portfolio-1" class="stack-item item-1">
+        <div class="stack-card">
+          <img src="assets/img/portfolio/uam-blueprint.jpg" class="img-fluid rounded shadow-sm" alt="UAM Project">
+          <div class="stack-caption">How do we stabilize urban flight?</div>
         </div>
-      </div>
-    </a>
-  </div>
+      </a>
 
-  <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
-    <a href="#scroll-portfolio" class="project-card-link">
-      <div class="about-project-card">
-        <img src="assets/img/portfolio/m1.png" class="img-fluid rounded-4 shadow" alt="MRAC Project">
-        <div class="card-caption">
-          <span>Can adaptive laws perfect precision?</span>
+      <a href="#scroll-portfolio-2" class="stack-item item-2">
+        <div class="stack-card">
+          <img src="assets/img/portfolio/m1.png" class="img-fluid rounded shadow-sm" alt="MRAC Project">
+          <div class="stack-caption">Can adaptive laws perfect precision?</div>
         </div>
-      </div>
-    </a>
-  </div>
+      </a>
 
-  <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
-    <a href="#scroll-portfolio" class="project-card-link">
-      <div class="about-project-card">
-        <img src="assets/img/portfolio/star1.png" class="img-fluid rounded-4 shadow" alt="STAR Lab">
-        <div class="card-caption">
-          <span>What defines mission-critical hardware?</span>
+      <a href="#scroll-portfolio-3" class="stack-item item-3">
+        <div class="stack-card">
+          <img src="assets/img/portfolio/star1.png" class="img-fluid rounded shadow-sm" alt="STAR Lab">
+          <div class="stack-caption">What defines mission-critical hardware?</div>
         </div>
-      </div>
-    </a>
+      </a>
+
+    </div>
   </div>
 </div>
+          
         </div>
 
       </div>
