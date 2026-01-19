@@ -24,9 +24,9 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <style>
-  /* Layout Styling */
+  /* Keeps the images crisp and aligned */
 .custom-photo-layout {
-  padding-left: 10px;
+  padding-left: 15px;
 }
 
 .layout-item {
@@ -34,45 +34,38 @@
   display: block;
   overflow: hidden;
   border-radius: 8px;
-  text-decoration: none !important;
+  border: 1px solid #eee;
 }
 
-/* Image heights to match the paragraph's visual weight */
 .layout-item img {
   width: 100%;
   object-fit: cover;
-  height: 120px; /* Adjust height based on your text length */
-  transition: 0.3s ease;
+  height: 110px; /* Reduced to fit better next to the para */
+  transition: transform 0.3s ease;
 }
 
 .small-item img {
-  height: 75px; /* Adjust height for the bottom two images */
+  height: 70px; /* Smaller height for the bottom pair */
 }
 
-/* Interactive Captions */
+/* Eye-catching hover effect */
 .layout-caption {
   position: absolute;
   inset: 0;
-  background: rgba(0, 119, 181, 0.85); /* LinkedIn Blue */
+  background: rgba(0, 119, 181, 0.9); /* LinkedIn Blue */
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  font-size: 0.7rem;
-  font-weight: 600;
   padding: 5px;
+  font-size: 0.7rem;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
-.layout-item:hover .layout-caption {
-  opacity: 1;
-}
-
-.layout-item:hover img {
-  transform: scale(1.1);
-}
+.layout-item:hover .layout-caption { opacity: 1; }
+.layout-item:hover img { transform: scale(1.1); }
   </style>
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
@@ -135,52 +128,53 @@
 
     <!-- About Section -->
     <section id="about" class="about section">
+  <div class="container">
+    <div class="row gy-4 align-items-stretch">
 
-      <div class="container">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-8 content" data-aos="fade-up" data-aos-delay="100">
-  <h2 class="description-title" id="scroll-about-me">Saloni Malviya | About Me</h2>
-  
-  <div class="row align-items-start mt-4">
-    <div class="col-lg-7 col-md-12">
-      <p class="text-justify">
-        Currently pursuing my Master's at the University of Michigan, I am an engineer driven by the challenge of making complex systems move with precision. My foundation in developing mission-critical hardware at ISRO and DRDO taught me the value of precision modeling and structural integrity. Now, I am merging that hardware expertise with a deep focus on control systems to shape the next generation of aerospace innovation actively. My goal is to be an active participant in shaping the future of the aerospace industry. I am committed to equipping myself with the skills and knowledge needed to drive impactful change.
-      </p>
-    </div>
-
-    <div class="col-lg-5 col-md-12">
-      <div class="custom-photo-layout">
-        <div class="row mb-2">
-          <div class="col-12">
-            <a href="#scroll-portfolio-1" class="layout-item">
-              <img src="assets/img/portfolio/w1.png" class="img-fluid rounded shadow-sm" alt="UAM Project">
-              <div class="layout-caption">How do we stabilize urban flight?</div>
-            </a>
-          </div>
-        </div>
-
-        <div class="row g-2">
-          <div class="col-6">
-            <a href="#scroll-portfolio-2" class="layout-item small-item">
-              <img src="assets/img/portfolio/m1.png" class="img-fluid rounded shadow-sm" alt="MRAC Project">
-              <div class="layout-caption mini">Adaptive Laws</div>
-            </a>
-          </div>
-          <div class="col-6">
-            <a href="#scroll-portfolio-3" class="layout-item small-item">
-              <img src="assets/img/portfolio/star1.png" class="img-fluid rounded shadow-sm" alt="STAR Lab">
-              <div class="layout-caption mini">Hardware Integrity</div>
-            </a>
-          </div>
+      <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="about-img">
+          <img src="assets/img/Saloni.jpg" class="img-fluid rounded-4 shadow" alt="Saloni Malviya">
         </div>
       </div>
-    </div>
-  </div>
-</div>
 
-    </section><!-- /About Section -->
+      <div class="col-lg-8 content" data-aos="fade-up" data-aos-delay="100">
+        <h2 class="description-title" id="scroll-about-me">Saloni Malviya | About Me</h2>
+        
+        <div class="row mt-4">
+          <div class="col-xl-7 col-lg-12">
+            <p class="text-justify">
+              Currently pursuing my Master's at the University of Michigan, I am an engineer driven by the challenge of making complex systems move with precision. My foundation in developing mission-critical hardware at ISRO and DRDO taught me the value of precision modeling and structural integrity. Now, I am merging that hardware expertise with a deep focus on control systems to shape the next generation of aerospace innovation actively. My goal is to be an active participant in shaping the future of the aerospace industry. I am committed to equipping myself with the skills and knowledge needed to drive impactful change.
+            </p>
+          </div>
+
+          <div class="col-xl-5 col-lg-12">
+            <div class="custom-photo-layout">
+              <div class="row mb-2">
+                <div class="col-12">
+                  <a href="#scroll-portfolio-1" class="layout-item">
+                    <img src="assets/img/portfolio/w1.png" class="img-fluid shadow-sm" alt="UAM Project">
+                    <div class="layout-caption">How do we stabilize urban flight?</div>
+                  </a>
+                </div>
+              </div>
+              <div class="row g-2">
+                <div class="col-6">
+                  <a href="#scroll-portfolio-2" class="layout-item small-item">
+                    <img src="assets/img/portfolio/m1.png" class="img-fluid shadow-sm" alt="MRAC Project">
+                    <div class="layout-caption mini">Adaptive Laws</div>
+                  </a>
+                </div>
+                <div class="col-6">
+                  <a href="#scroll-portfolio-3" class="layout-item small-item">
+                    <img src="assets/img/portfolio/star1.png" class="img-fluid shadow-sm" alt="STAR Lab">
+                    <div class="layout-caption mini">Hardware Integrity</div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> </div> </div> </div>
+</section><!-- /About Section -->
 
     
     <!-- Why Us Section -->
