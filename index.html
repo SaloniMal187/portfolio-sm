@@ -24,53 +24,54 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <style>
-  /* Container for the stack */
-.project-stack {
-  position: relative;
-  height: 220px; /* Adjust height based on image size */
-  width: 100%;
-  margin-top: 10px;
+  /* Layout Styling */
+.custom-photo-layout {
+  padding-left: 10px;
 }
 
-/* Base style for each photo card */
-.stack-item {
-  position: absolute;
-  width: 160px; /* Small size as requested */
-  transition: all 0.4s ease;
+.layout-item {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 8px;
   text-decoration: none !important;
 }
 
-.stack-card {
-  background: white;
-  padding: 5px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+/* Image heights to match the paragraph's visual weight */
+.layout-item img {
+  width: 100%;
+  object-fit: cover;
+  height: 120px; /* Adjust height based on your text length */
+  transition: 0.3s ease;
 }
 
-.stack-caption {
-  font-size: 0.65rem;
-  color: #555;
-  font-style: italic;
-  margin-top: 5px;
+.small-item img {
+  height: 75px; /* Adjust height for the bottom two images */
+}
+
+/* Interactive Captions */
+.layout-caption {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 119, 181, 0.85); /* LinkedIn Blue */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  line-height: 1.1;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 5px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-/* Individual positions to create the "stack" look */
-.item-1 { z-index: 3; right: 0; top: 0; transform: rotate(3deg); }
-.item-2 { z-index: 2; right: 40px; top: 15px; transform: rotate(-5deg); }
-.item-3 { z-index: 1; right: 80px; top: 30px; transform: rotate(-2deg); }
-
-/* Hover effect: Bring the hovered card to the front and make it pop */
-.stack-item:hover {
-  z-index: 10;
-  transform: scale(1.15) rotate(0deg);
-  cursor: pointer;
+.layout-item:hover .layout-caption {
+  opacity: 1;
 }
 
-.stack-item:hover .stack-card {
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-  border-color: #0077B5; /* LinkedIn Blue border on hover */
+.layout-item:hover img {
+  transform: scale(1.1);
 }
   </style>
   <!-- Main CSS File -->
@@ -139,50 +140,45 @@
 
         <div class="row gy-4">
 
-          <div class="col-lg-4 position-relative" data-aos="fade-up" data-aos-delay="200">
-            <img src="assets/img/Saloni.jpg" class="img-fluid" alt="">
+          <div class="col-lg-8 content" data-aos="fade-up" data-aos-delay="100">
+  <h2 class="description-title" id="scroll-about-me">Saloni Malviya | About Me</h2>
+  
+  <div class="row align-items-start mt-4">
+    <div class="col-lg-7 col-md-12">
+      <p class="text-justify">
+        Currently pursuing my Master's at the University of Michigan, I am an engineer driven by the challenge of making complex systems move with precision. My foundation in developing mission-critical hardware at ISRO and DRDO taught me the value of precision modeling and structural integrity. Now, I am merging that hardware expertise with a deep focus on control systems to shape the next generation of aerospace innovation actively. My goal is to be an active participant in shaping the future of the aerospace industry. I am committed to equipping myself with the skills and knowledge needed to drive impactful change.
+      </p>
+    </div>
+
+    <div class="col-lg-5 col-md-12">
+      <div class="custom-photo-layout">
+        <div class="row mb-2">
+          <div class="col-12">
+            <a href="#scroll-portfolio-1" class="layout-item">
+              <img src="assets/img/portfolio/w1.png" class="img-fluid rounded shadow-sm" alt="UAM Project">
+              <div class="layout-caption">How do we stabilize urban flight?</div>
+            </a>
           </div>
-
-          <div class="col-lg-7 content" data-aos="fade-up" data-aos-delay="100">
-            <h2 class="description-title" id="scroll-about-me">Saloni Malviya | About Me</h2>
-            <p class="text-justify">
-              Currently pursuing my Master's at the University of Michigan, I am an engineer driven by the challenge of making complex systems move with precision. My foundation in developing mission-critical hardware at ISRO and DRDO taught me the value of precision modeling and structural integrity. Now, I am merging that hardware expertise with a deep focus on control systems to shape the next generation of aerospace innovation actively. My goal is to be an active participant in shaping the future of the aerospace industry. I am committed to equipping myself with the skills and knowledge needed to drive impactful change.
-            </p>
-             <div class="row justify-content-end mt-3">
-  <div class="col-lg-5 col-md-7">
-    <div class="project-stack">
-      
-      <a href="#scroll-portfolio-1" class="stack-item item-1">
-        <div class="stack-card">
-          <img src="assets/img/portfolio/w1.png" class="img-fluid rounded shadow-sm" alt="UAM Project">
-          <div class="stack-caption">How do we stabilize urban flight?</div>
         </div>
-      </a>
 
-      <a href="#scroll-portfolio-2" class="stack-item item-2">
-        <div class="stack-card">
-          <img src="assets/img/portfolio/m1.png" class="img-fluid rounded shadow-sm" alt="MRAC Project">
-          <div class="stack-caption">Can adaptive laws perfect precision?</div>
+        <div class="row g-2">
+          <div class="col-6">
+            <a href="#scroll-portfolio-2" class="layout-item small-item">
+              <img src="assets/img/portfolio/m1.png" class="img-fluid rounded shadow-sm" alt="MRAC Project">
+              <div class="layout-caption mini">Adaptive Laws</div>
+            </a>
+          </div>
+          <div class="col-6">
+            <a href="#scroll-portfolio-3" class="layout-item small-item">
+              <img src="assets/img/portfolio/star1.png" class="img-fluid rounded shadow-sm" alt="STAR Lab">
+              <div class="layout-caption mini">Hardware Integrity</div>
+            </a>
+          </div>
         </div>
-      </a>
-
-      <a href="#scroll-portfolio-3" class="stack-item item-3">
-        <div class="stack-card">
-          <img src="assets/img/portfolio/star1.png" class="img-fluid rounded shadow-sm" alt="STAR Lab">
-          <div class="stack-caption">What defines mission-critical hardware?</div>
-        </div>
-      </a>
-
+      </div>
     </div>
   </div>
-
-          </div>
-
-         </div>
-          
-        </div>
-
-      </div>
+</div>
 
     </section><!-- /About Section -->
 
