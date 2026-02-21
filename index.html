@@ -697,7 +697,7 @@
         const alt = 256;
 
         try {
-            const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(`https://api.n2yo.com/rest/v1/satellite/whats_up/${lat}/${lng}/${alt}/45/0/&apiKey=${apiKey}`)}`);
+            const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(`https://api.n2yo.com/rest/v1/satellite/whats_up/42.2808/-83.7430/256/45/0/&apiKey=${apiKey}`)}`);
             const json = await response.json();
             const data = JSON.parse(json.contents);
 
@@ -712,11 +712,15 @@
                 nameEl.innerText = "NO MAJOR SATS OVERHEAD";
                 statsEl.innerText = "Horizon clear. Monitoring for next orbital pass over Michigan.";
             }
-        } catch (error) {
-            console.error("Telemetry Error:", error);
-            document.getElementById('sat-name').innerText = "OFFLINE MODE";
-            document.getElementById('sat-stats').innerText = "Data link interrupted. Checking local orbital models.";
-        }
+      } catch (error) {
+    console.error("Telemetry Error:", error);
+    // FALLBACK DATA: Shows a cool historical satellite if API fails
+    const nameEl = document.getElementById('sat-name');
+    const statsEl = document.getElementById('sat-stats');
+    
+    nameEl.innerText = "HISTORICAL TRACK: VOYAGER 1";
+    statsEl.innerText = "STATUS: INTERSTELLAR SPACE | DISTANCE: 24+ BILLION KM";
+    }
     }
 
     updateHeroSat();
