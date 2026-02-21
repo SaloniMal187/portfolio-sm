@@ -199,12 +199,13 @@
 }
 
 
-    .project-strip {
-  background: #020617;
+   .project-strip {
+  background: #ffffff; /* Changed from deep blue to white */
   padding: 40px 0;
   overflow: hidden;
-  border-top: 1px solid rgba(0, 255, 150, 0.2);
-  border-bottom: 1px solid rgba(0, 255, 150, 0.2);
+  /* subtle light grey borders instead of green-tinted ones */
+  border-top: 1px solid #e2e8f0; 
+  border-bottom: 1px solid #e2e8f0;
 }
 
 .marquee-wrapper {
@@ -221,7 +222,6 @@
   animation: scroll-marquee 30s linear infinite;
 }
 
-/* Pause animation on hover */
 .marquee-wrapper:hover .marquee-content {
   animation-play-state: paused;
 }
@@ -233,13 +233,14 @@
 
 .project-slide {
   position: relative;
-  width: 250px; /* Small size as requested */
+  width: 250px; 
   height: 150px;
   flex-shrink: 0;
   border-radius: 8px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: transform 0.3s ease;
+  /* darker border for contrast against white */
+  border: 1px solid #cbd5e1; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-slide img {
@@ -251,7 +252,7 @@
 .slide-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 255, 150, 0.8);
+  background: rgba(0, 255, 150, 0.9); /* Solid green on hover */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -260,7 +261,7 @@
 }
 
 .slide-overlay span {
-  color: #020617;
+  color: #020617; /* Dark text for readability over green */
   font-weight: 800;
   font-size: 0.75rem;
   text-align: center;
@@ -271,6 +272,7 @@
 .project-slide:hover {
   transform: scale(1.05);
   border-color: #00ff96;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
 .project-slide:hover .slide-overlay {
@@ -354,9 +356,7 @@
     <!-- About Section -->
     <section id="about" class="about section">
   <div class="container">
-    <div class="row gy-4 align-items-stretch">
-
-      <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+    <div class="row gy-4 align-items-start"> <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
         <div class="about-img">
           <img src="assets/img/Saloni.jpg" class="img-fluid rounded-4 shadow" alt="Saloni Malviya">
         </div>
@@ -365,13 +365,15 @@
       <div class="col-lg-8 content" data-aos="fade-up" data-aos-delay="100">
         <h2 class="description-title" id="scroll-about-me">Saloni Malviya | About Me</h2>
         
-        <div class="row mt-4">
-          <div class="col-xl-7 col-lg-12">
-            <p class="text-justify">
-              Currently pursuing my Master's at the University of Michigan, I am an engineer driven by the challenge of making complex systems move with precision. My foundation in developing mission-critical hardware at ISRO and DRDO taught me the value of precision modeling and structural integrity. Now, I am merging that hardware expertise with a deep focus on control systems to shape the next generation of aerospace innovation actively. My goal is to be an active participant in shaping the future of the aerospace industry. I am committed to equipping myself with the skills and knowledge needed to drive impactful change.
-            </p>
-          </div>
-        </div> </div> </div> </div>
+        <div class="mt-4">
+          <p class="text-justify" style="line-height: 1.8; font-size: 1.1rem; color: #444;">
+            Currently pursuing my Master's at the University of Michigan, I am an engineer driven by the challenge of making complex systems move with precision. My foundation in developing mission-critical hardware at ISRO and DRDO taught me the value of precision modeling and structural integrity. Now, I am merging that hardware expertise with a deep focus on control systems to shape the next generation of aerospace innovation actively. My goal is to be an active participant in shaping the future of the aerospace industry. I am committed to equipping myself with the skills and knowledge needed to drive impactful change.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </section><!-- /About Section -->
 
    <section id="project-strip" class="project-strip">
