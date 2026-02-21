@@ -811,7 +811,9 @@ async function updateHeroSat() {
         } else {
             // Success, but horizon is empty
             nameEl.innerText = "TRACKING: ISS (ZARYA)";
-            statsEl.innerText = "HISTORICAL MEAN ORBIT | ALT: 420KM | VEL: 7.66 KM/S";
+            // Using 'sat.azimuth' (all lowercase) and adding a fallback of 0
+            const azimuth = sat.azimuth || sat.az_deg || 0; 
+            statsEl.innerText = `ALT: ${Math.round(sat.satalt)}KM | AZ: ${azimuth}° | ${data.above.length} ASSETS IN RANGE`;
         }
     } catch (error) {
         console.error("Telemetry Link Failure:", error);
