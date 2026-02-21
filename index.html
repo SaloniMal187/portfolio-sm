@@ -778,37 +778,55 @@ function type() {
 
 // 3. SATELLITE TRACKING LOGIC
 async function updateHeroSat() {
+    // 1. HARDCODE YOUR KEY HERE JUST TO TEST
+    const apiKey = 'NBB4QK-65N4J7-SGQA72-5NXU'; 
     const nameEl = document.getElementById('sat-name');
     const statsEl = document.getElementById('sat-stats');
-    if (!nameEl || !statsEl) return;
 
-    const lat = 42.2808; 
-    const lng = -83.7430;
-    const targetUrl = `https://api.n2yo.com/rest/v1/satellite/whats_up/${lat}/${lng}/256/10/0/&apiKey=${apiKey}`;
-    const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(targetUrl)}`;
+    // 2. BUILD THE URL PIECE BY PIECE (Prevents syntax errors)
+    const lat = "42.2808";
+    const lng = "-83.7430";
+    const alt = "256";
+    const radius = "70"; // Wider radius to ensure we find something
+    const cat = "0";     // All satellites
+    
+    // N2YO Expects: above/lat/lng/alt/radius/category/&apiKey=...
+    const n2yoUrl = `https://api.n2yo.com/rest/v1/satellite/above/${lat}/${lng}/${alt}/${radius}/${cat}/&apiKey=${apiKey}`;
+    
+    // 3. USE ALLORIGINS WITH A "CACHE BUSTER"
+    const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(n2yoUrl)}&timestamp=${Date.now()}`;
 
     try {
         const response = await fetch(proxyUrl);
         const json = await response.json();
-        if (!json.contents) throw new Error("No data received");
+        
+        // Safety check for proxy response
+        if (!json.contents) throw new Error("No contents");
+
+        // If N2YO sends back the 'Purpose' text, it means the URL structure was still rejected
+        if (json.contents.includes("Purpose of the API")) {
+            console.warn("N2YO rejected the URL structure. Trying Fallback.");
+            throw new Error("Invalid URL Structure");
+        }
 
         const data = JSON.parse(json.contents);
 
         if (data && data.above && data.above.length > 0) {
             const sat = data.above[0];
             nameEl.innerText = `TRACKING: ${sat.satname}`;
-            statsEl.innerText = `ALT: ${sat.satalt}KM | AZ: ${sat.azimuth}° | ${data.above.length} ASSETS IN RANGE`;
+            statsEl.innerText = `ALT: ${sat.satalt}KM | AZ: ${sat.azimuth}° | ${data.above.length} SATS IN RANGE`;
         } else {
+            // Success, but sky is empty
             nameEl.innerText = "TRACKING: ISS (ZARYA)";
             statsEl.innerText = "HISTORICAL MEAN ORBIT | ALT: 420KM | VEL: 7.66 KM/S";
         }
     } catch (error) {
-        console.error("Telemetry Error:", error);
+        console.error("Telemetry Link Failure:", error);
+        // This keeps the site looking professional even during a failure
         nameEl.innerText = "SYSTEMS_NOMINAL";
         statsEl.innerText = "LOCAL_MODEL_ACTIVE: VOYAGER_1_TRACKING";
     }
 }
-
 // Start everything
 document.addEventListener('DOMContentLoaded', () => {
     type();
