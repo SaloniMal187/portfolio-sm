@@ -197,7 +197,85 @@
   70% { box-shadow: 0 0 0 10px rgba(0, 255, 150, 0); }
   100% { box-shadow: 0 0 0 0 rgba(0, 255, 150, 0); }
 }
-    
+
+
+    .project-strip {
+  background: #020617;
+  padding: 40px 0;
+  overflow: hidden;
+  border-top: 1px solid rgba(0, 255, 150, 0.2);
+  border-bottom: 1px solid rgba(0, 255, 150, 0.2);
+}
+
+.marquee-wrapper {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+}
+
+.marquee-content {
+  display: flex;
+  flex-shrink: 0;
+  gap: 20px;
+  min-width: 100%;
+  animation: scroll-marquee 30s linear infinite;
+}
+
+/* Pause animation on hover */
+.marquee-wrapper:hover .marquee-content {
+  animation-play-state: paused;
+}
+
+@keyframes scroll-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.project-slide {
+  position: relative;
+  width: 250px; /* Small size as requested */
+  height: 150px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.project-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 255, 150, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.slide-overlay span {
+  color: #020617;
+  font-weight: 800;
+  font-size: 0.75rem;
+  text-align: center;
+  padding: 10px;
+  text-transform: uppercase;
+}
+
+.project-slide:hover {
+  transform: scale(1.05);
+  border-color: #00ff96;
+}
+
+.project-slide:hover .slide-overlay {
+  opacity: 1;
+}
   </style>
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
@@ -293,36 +371,65 @@
               Currently pursuing my Master's at the University of Michigan, I am an engineer driven by the challenge of making complex systems move with precision. My foundation in developing mission-critical hardware at ISRO and DRDO taught me the value of precision modeling and structural integrity. Now, I am merging that hardware expertise with a deep focus on control systems to shape the next generation of aerospace innovation actively. My goal is to be an active participant in shaping the future of the aerospace industry. I am committed to equipping myself with the skills and knowledge needed to drive impactful change.
             </p>
           </div>
-
-          <div class="col-xl-5 col-lg-12">
-            <div class="custom-photo-layout">
-              <div class="row mb-2">
-                <div class="col-12">
-                  <a href="project-2.html" class="layout-item">
-                    <img src="assets/img/portfolio/MRAC.png" class="img-fluid shadow-sm" alt="MRAC">
-                    <div class="layout-caption">Adaptive Laws</div>
-                  </a>
-                </div>
-              </div>
-              <div class="row g-2">
-                <div class="col-6">
-                  <a href="portfolio-details-4.html" class="layout-item small-item">
-                    <img src="assets/img/portfolio/pic1.png" class="img-fluid shadow-sm" alt="Gripper">
-                    <div class="layout-caption mini">Robotic Gripper</div>
-                  </a>
-                </div>
-                <div class="col-6">
-                  <a href="portfolio-details-1.html" class="layout-item small-item">
-                    <img src="assets/img/portfolio/pic2.png" class="img-fluid shadow-sm" alt="STP">
-                    <div class="layout-caption mini">Static Test Pad</div>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
         </div> </div> </div> </div>
 </section><!-- /About Section -->
 
+   <section id="project-strip" class="project-strip">
+  <div class="container-fluid p-0">
+    <div class="marquee-wrapper">
+      <div class="marquee-content">
+        
+        <a href="portfolio-details-4.html" class="project-slide">
+          <img src="assets/img/portfolio/isro.png" alt="ISRO SAC">
+          <div class="slide-overlay"><span>ISRO SAC Internship</span></div>
+        </a>
+
+        <a href="project-2.html" class="project-slide">
+          <img src="assets/img/portfolio/MRAC.png" alt="MRAC">
+          <div class="slide-overlay"><span>Model Reference Adaptive Control</span></div>
+        </a>
+
+        <a href="research-1.html" class="project-slide">
+          <img src="assets/img/portfolio/FGM.jpg" alt="FGM Research">
+          <div class="slide-overlay"><span>FGM Vibration Analysis</span></div>
+        </a>
+
+        <a href="project-3.html" class="project-slide">
+          <img src="assets/img/portfolio/NMPC.png" alt="NMPC">
+          <div class="slide-overlay"><span>Nonlinear MPC</span></div>
+        </a>
+
+        <a href="portfolio-details.html" class="project-slide">
+          <img src="assets/img/portfolio/DRDO.jpg" alt="DRDO">
+          <div class="slide-overlay"><span>DRDO Defence Lab</span></div>
+        </a>
+
+        <a href="project-4.html" class="project-slide">
+          <img src="assets/img/portfolio/i0.png" alt="Interceptor">
+          <div class="slide-overlay"><span>Missile Guidance & Control</span></div>
+        </a>
+
+        <a href="portfolio-details-4.html" class="project-slide">
+          <img src="assets/img/portfolio/isro.png" alt="ISRO SAC">
+          <div class="slide-overlay"><span>ISRO SAC Internship</span></div>
+        </a>
+        <a href="project-2.html" class="project-slide">
+          <img src="assets/img/portfolio/MRAC.png" alt="MRAC">
+          <div class="slide-overlay"><span>Model Reference Adaptive Control</span></div>
+        </a>
+        <a href="research-1.html" class="project-slide">
+          <img src="assets/img/portfolio/FGM.jpg" alt="FGM Research">
+          <div class="slide-overlay"><span>FGM Vibration Analysis</span></div>
+        </a>
+        <a href="project-3.html" class="project-slide">
+          <img src="assets/img/portfolio/NMPC.png" alt="NMPC">
+          <div class="slide-overlay"><span>Nonlinear MPC</span></div>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
     
     <!-- Why Us Section -->
     <section id="why-us" class="why-us section">
