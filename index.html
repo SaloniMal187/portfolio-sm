@@ -811,7 +811,7 @@
       const cat = "0";
       
       const n2yoUrl = `https://api.n2yo.com/rest/v1/satellite/above/${lat}/${lng}/${alt}/${radius}/${cat}/&apiKey=${apiKey}`;
-
+      const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(n2yoUrl)}&t=${Date.now()}`;
       try {
           const response = await fetch(proxyUrl);
           if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
