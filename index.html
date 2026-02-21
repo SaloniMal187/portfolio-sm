@@ -778,51 +778,44 @@ function type() {
 
 // 3. SATELLITE TRACKING LOGIC
 async function updateHeroSat() {
-    // 1. HARDCODE YOUR KEY HERE JUST TO TEST
+    // I see your key from the console error - I'll use it here to ensure it's correct
     const apiKey = 'NBB4QK-65N4J7-SGQA72-5NXU'; 
     const nameEl = document.getElementById('sat-name');
     const statsEl = document.getElementById('sat-stats');
 
-    // 2. BUILD THE URL PIECE BY PIECE (Prevents syntax errors)
+    if (!nameEl || !statsEl) return;
+
     const lat = "42.2808";
     const lng = "-83.7430";
     const alt = "256";
-    const radius = "70"; // Wider radius to ensure we find something
-    const cat = "0";     // All satellites
+    const radius = "70";
+    const cat = "0";
     
-    // N2YO Expects: above/lat/lng/alt/radius/category/&apiKey=...
+    // The Direct N2YO URL
     const n2yoUrl = `https://api.n2yo.com/rest/v1/satellite/above/${lat}/${lng}/${alt}/${radius}/${cat}/&apiKey=${apiKey}`;
     
-    // 3. USE ALLORIGINS WITH A "CACHE BUSTER"
-    const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(n2yoUrl)}&timestamp=${Date.now()}`;
+    // NEW PROXY: corsproxy.io is much better at handling the "Access-Control-Allow-Origin" header
+    const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(n2yoUrl)}`;
 
     try {
         const response = await fetch(proxyUrl);
-        const json = await response.json();
         
-        // Safety check for proxy response
-        if (!json.contents) throw new Error("No contents");
-
-        // If N2YO sends back the 'Purpose' text, it means the URL structure was still rejected
-        if (json.contents.includes("Purpose of the API")) {
-            console.warn("N2YO rejected the URL structure. Trying Fallback.");
-            throw new Error("Invalid URL Structure");
-        }
-
-        const data = JSON.parse(json.contents);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        
+        const data = await response.json();
 
         if (data && data.above && data.above.length > 0) {
             const sat = data.above[0];
             nameEl.innerText = `TRACKING: ${sat.satname}`;
             statsEl.innerText = `ALT: ${sat.satalt}KM | AZ: ${sat.azimuth}° | ${data.above.length} SATS IN RANGE`;
         } else {
-            // Success, but sky is empty
+            // Success, but horizon is empty
             nameEl.innerText = "TRACKING: ISS (ZARYA)";
             statsEl.innerText = "HISTORICAL MEAN ORBIT | ALT: 420KM | VEL: 7.66 KM/S";
         }
     } catch (error) {
         console.error("Telemetry Link Failure:", error);
-        // This keeps the site looking professional even during a failure
+        // Fallback so your site never looks 'broken'
         nameEl.innerText = "SYSTEMS_NOMINAL";
         statsEl.innerText = "LOCAL_MODEL_ACTIVE: VOYAGER_1_TRACKING";
     }
