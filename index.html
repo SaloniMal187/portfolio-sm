@@ -72,6 +72,7 @@
 .layout-item:hover img { transform: scale(1.1); }
 
 /* Hero HUD & Engineering Grid */
+/* --- UPDATED HERO SECTION --- */
 #hero {
   position: relative;
   overflow: hidden;
@@ -80,14 +81,32 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* Engineering Grid Background */
-  background-image: 
-    linear-gradient(rgba(0, 255, 150, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 255, 150, 0.05) 1px, transparent 1px);
-  background-size: 50px 50px;
+  perspective: 1000px; /* Required for 3D depth */
 }
 
-/* Moving scanline effect */
+/* 3D Moving Horizon Grid - Replaces static engineering grid */
+.horizon-grid {
+  position: absolute;
+  width: 200%;
+  height: 100%;
+  bottom: -30%;
+  left: -50%;
+  background-image: 
+    linear-gradient(rgba(0, 255, 150, 0.1) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(0, 255, 150, 0.1) 2px, transparent 2px);
+  background-size: 60px 60px;
+  transform: rotateX(60deg);
+  animation: move-grid 4s linear infinite;
+  mask-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0));
+  z-index: 1;
+}
+
+@keyframes move-grid {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 60px; }
+}
+
+/* Moving Scanline effect */
 #hero::after {
   content: "";
   position: absolute;
@@ -96,20 +115,43 @@
   background: linear-gradient(0deg, transparent 0%, rgba(0, 255, 150, 0.03) 50%, transparent 100%);
   animation: scanline 10s linear infinite;
   pointer-events: none;
+  z-index: 2;
 }
 
-@keyframes scanline {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100%); }
+/* Interactive Mouse Glow */
+.cursor-glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(0, 255, 150, 0.12) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  transition: width 0.3s, height 0.3s;
 }
 
+/* Mission Title Style */
+.mission-title {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 800;
+  font-size: clamp(3rem, 8vw, 5rem); 
+  letter-spacing: -2px;
+  color: #fff;
+  text-shadow: 0 0 30px rgba(0, 255, 150, 0.3);
+  margin-bottom: 0;
+  position: relative;
+  z-index: 3;
+}
+
+/* --- HUD & ANIMATIONS --- */
 .radar-sweep {
   position: absolute;
   width: 150%; height: 150%;
   background: conic-gradient(from 0deg, transparent 0%, rgba(0, 255, 150, 0.08) 10%, transparent 20%);
   animation: sweep 8s linear infinite;
   pointer-events: none;
-  z-index: 1;
+  z-index: 2;
 }
 
 @keyframes sweep { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
@@ -124,6 +166,7 @@
   letter-spacing: 0.15em;
   font-size: 1.5rem;
   font-weight: 600;
+  z-index: 3;
 }
 
 .sat-data-overlay {
@@ -136,7 +179,8 @@
   margin-top: 30px;
   font-family: 'Courier New', monospace;
   box-shadow: 0 0 30px rgba(0, 255, 150, 0.15);
-  z-index: 2;
+  z-index: 3;
+  position: relative;
 }
 
 .glow-dot {
@@ -197,40 +241,34 @@
 
   <main class="main">
 
-    <section id="hero" class="hero section dark-background">
+   <section id="hero" class="hero section dark-background">
+  <div id="glow" class="cursor-glow"></div>
+  <div class="horizon-grid"></div>
   <div class="radar-sweep"></div>
   
-  <div class="container text-center" style="z-index: 2;" data-aos="fade-up">
-    <div style="font-family: monospace; color: rgba(0, 255, 150, 0.5); font-size: 0.75rem; margin-bottom: 20px; letter-spacing: 2px;">
-      ALT: 402KM | INC: 51.6° | VEL: 7.66 KM/S | ANN ARBOR STATION
+  <div class="container text-center" style="z-index: 2;" data-aos="zoom-out">
+    <p style="letter-spacing: 5px; color: #00ff96; font-size: 0.7rem; font-weight: 600; text-transform: uppercase;">
+        Orbital Dynamics & Control Lab
+    </p>
+    
+    <h1 class="mission-title">SALONI MALVIYA</h1>
+    
+    <div style="height: 50px; display: flex; justify-content: center; align-items: center; margin-top: 10px;">
+        <div class="typewriter-text" id="typewriter-headline" style="font-size: 1.6rem;"></div>
+    </div>
+    
+    <div class="sat-data-overlay" style="margin-top: 40px; border: 1px solid rgba(0,255,150,0.5);">
+      <div class="d-flex align-items-center justify-content-center mb-1">
+        <span class="glow-dot"></span> 
+        <span id="sat-name" style="color: #fff; font-size: 1rem; font-family: 'Courier New', monospace;">ESTABLISHING GROUND LINK...</span>
+      </div>
+      <small id="sat-stats" style="color: #94a3b8; font-family: 'Courier New', monospace;"></small>
     </div>
 
-    <div class="row justify-content-center">
-      <div class="col-lg-10">
-        <h1 style="font-size: 3.5rem; font-weight: 800; color: #fff; margin-bottom: 10px;">
-          SALONI_MALVIYA.run()
-        </h1>
-        
-        <div style="height: 40px; display: flex; justify-content: center; align-items: center;">
-            <div class="typewriter-text" id="typewriter-headline"></div>
-        </div>
-        
-        <div class="sat-data-overlay">
-          <div class="d-flex align-items-center justify-content-center mb-1">
-            <span class="glow-dot"></span> 
-            <span id="sat-name" style="color: #fff; font-size: 1.1rem; letter-spacing: 1px;">INITIALIZING TELEMETRY...</span>
-          </div>
-          <small id="sat-stats" style="color: #94a3b8; font-size: 0.85rem;">
-              Connecting to N2YO Orbital Database...
-          </small>
-        </div>
-
-        <div class="mt-5">
-           <a href="#about" class="btn-get-started" style="border: 2px solid #00ff96; color: #00ff96; padding: 12px 35px; text-decoration: none; border-radius: 50px; font-weight: 600; text-transform: uppercase;">
-             Enter Mission Control
-           </a>
-        </div>
-      </div>
+    <div class="mt-5">
+       <a href="#about" class="btn-get-started" style="background: #00ff96; color: #020617; padding: 15px 40px; text-decoration: none; border-radius: 5px; font-weight: 800; text-transform: uppercase; box-shadow: 0 0 20px rgba(0,255,150,0.4);">
+         Begin Exploration
+       </a>
     </div>
   </div>
 </section>
@@ -723,113 +761,100 @@
   <script src="assets/js/main.js"></script>
 
   <script>
-    // 1. SET YOUR API KEY HERE
-const apiKey = 'NBB4QK-65N4J7-SGQA72-5NXU'; 
+  // 1. CONFIGURATION & KEY
+  const apiKey = 'NBB4QK-65N4J7-SGQA72-5NXU'; 
 
-// 2. TYPEWRITER ANIMATION LOGIC
-const phrases = [
-    "ADAPTIVE CONTROL SYSTEMS",
-    "ORBITAL MECHANICS",
-    "DISTURBANCE REJECTION",
-    "AEROSPACE INNOVATION"
-];
+  // 2. MOUSE GLOW LOGIC (Interactive 3D Grid)
+  document.addEventListener('mousemove', (e) => {
+      const glow = document.getElementById('glow');
+      if(glow) {
+          // Syncs the glow div position with the mouse cursor
+          glow.style.left = e.pageX + 'px';
+          glow.style.top = e.pageY + 'px';
+      }
+  });
 
-let i = 0;
-let j = 0;
-let currentPhrase = [];
-let isDeleting = false;
-let isPaused = false;
+  // 3. TYPEWRITER ANIMATION LOGIC
+  const phrases = [
+      "ADAPTIVE CONTROL SYSTEMS",
+      "ORBITAL MECHANICS",
+      "DISTURBANCE REJECTION",
+      "AEROSPACE INNOVATION"
+  ];
 
-function type() {
-    const typewriterEl = document.getElementById('typewriter-headline');
-    if (!typewriterEl) return;
+  let phraseIdx = 0;
+  let charIdx = 0;
+  let isDeleting = false;
 
-    isPaused = false;
-    typewriterEl.innerText = currentPhrase.join("");
+  function typeEffect() {
+      const el = document.getElementById('typewriter-headline');
+      if(!el) return;
 
-    if (i < phrases.length) {
-        if (!isDeleting && j <= phrases[i].length) {
-            currentPhrase.push(phrases[i][j]);
-            j++;
-        }
+      const currentPhrase = phrases[phraseIdx];
+      
+      if (isDeleting) {
+          el.innerText = currentPhrase.substring(0, charIdx--);
+      } else {
+          el.innerText = currentPhrase.substring(0, charIdx++);
+      }
 
-        if (isDeleting && j <= phrases[i].length) {
-            currentPhrase.pop(phrases[i][j]);
-            j--;
-        }
+      if (!isDeleting && charIdx > currentPhrase.length) {
+          isDeleting = true;
+          setTimeout(typeEffect, 2000); // Pause at end of phrase
+      } else if (isDeleting && charIdx < 0) {
+          isDeleting = false;
+          phraseIdx = (phraseIdx + 1) % phrases.length;
+          setTimeout(typeEffect, 500); // Short pause before next phrase
+      } else {
+          setTimeout(typeEffect, isDeleting ? 50 : 100);
+      }
+  }
 
-        if (j == phrases[i].length) {
-            isPaused = true;
-            isDeleting = true;
-        }
+  // 4. SATELLITE TRACKING LOGIC
+  async function updateHeroSat() {
+      const nameEl = document.getElementById('sat-name');
+      const statsEl = document.getElementById('sat-stats');
+      if (!nameEl || !statsEl) return;
 
-        if (isDeleting && j == 0) {
-            currentPhrase = [];
-            isDeleting = false;
-            i++;
-            if (i == phrases.length) i = 0;
-        }
-    }
-    const spedUp = Math.random() * (80 - 50) + 50;
-    const normalSpeed = Math.random() * (150 - 100) + 100;
-    const time = isPaused ? 2000 : isDeleting ? spedUp : normalSpeed;
-    setTimeout(type, time);
-}
+      const lat = "42.2808"; // Ann Arbor
+      const lng = "-83.7430";
+      const alt = "256";
+      const radius = "70";
+      const cat = "0";
+      
+      const n2yoUrl = `https://api.n2yo.com/rest/v1/satellite/above/${lat}/${lng}/${alt}/${radius}/${cat}/&apiKey=${apiKey}`;
+      const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(n2yoUrl)}`;
 
-// 3. SATELLITE TRACKING LOGIC
-async function updateHeroSat() {
-    // I see your key from the console error - I'll use it here to ensure it's correct
-    const apiKey = 'NBB4QK-65N4J7-SGQA72-5NXU'; 
-    const nameEl = document.getElementById('sat-name');
-    const statsEl = document.getElementById('sat-stats');
+      try {
+          const response = await fetch(proxyUrl);
+          if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+          const data = await response.json();
 
-    if (!nameEl || !statsEl) return;
+          if (data && data.above && data.above.length > 0) {
+              const sat = data.above[0];
+              const az = sat.azimuth || sat.az_deg || 0; 
+              nameEl.innerText = `TRACKING: ${sat.satname}`;
+              statsEl.innerText = `ALT: ${Math.round(sat.satalt)}KM | AZ: ${Math.round(az)}° | ${data.above.length} ASSETS_IN_RANGE`;
+          } else {
+              // Success, but horizon is empty: Manual override for ISS
+              nameEl.innerText = "TRACKING: ISS (ZARYA)";
+              statsEl.innerText = "HISTORICAL MEAN ORBIT | ALT: 420KM | VEL: 7.66 KM/S";
+          }
+      } catch (error) {
+          console.error("Telemetry Link Failure:", error);
+          nameEl.innerText = "SYSTEMS_NOMINAL";
+          statsEl.innerText = "LOCAL_MODEL_ACTIVE: VOYAGER_1_TRACKING";
+      }
+  }
 
-    const lat = "42.2808";
-    const lng = "-83.7430";
-    const alt = "256";
-    const radius = "70";
-    const cat = "0";
-    
-    // The Direct N2YO URL
-    const n2yoUrl = `https://api.n2yo.com/rest/v1/satellite/above/${lat}/${lng}/${alt}/${radius}/${cat}/&apiKey=${apiKey}`;
-    
-    // NEW PROXY: corsproxy.io is much better at handling the "Access-Control-Allow-Origin" header
-    const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(n2yoUrl)}`;
-
-    try {
-        const response = await fetch(proxyUrl);
-        
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        
-        const data = await response.json();
-
-        if (data && data.above && data.above.length > 0) {
-            const sat = data.above[0];
-            nameEl.innerText = `TRACKING: ${sat.satname}`;
-            statsEl.innerText = `ALT: ${sat.satalt}KM | AZ: ${sat.azimuth}° | ${data.above.length} SATS IN RANGE`;
-        } else {
-            // Success, but horizon is empty
-            nameEl.innerText = "TRACKING: ISS (ZARYA)";
-            // Using 'sat.azimuth' (all lowercase) and adding a fallback of 0
-            const azimuth = sat.azimuth || sat.az_deg || 0; 
-            statsEl.innerText = `ALT: ${Math.round(sat.satalt)}KM | AZ: ${azimuth}° | ${data.above.length} ASSETS IN RANGE`;
-        }
-    } catch (error) {
-        console.error("Telemetry Link Failure:", error);
-        // Fallback so your site never looks 'broken'
-        nameEl.innerText = "SYSTEMS_NOMINAL";
-        statsEl.innerText = "LOCAL_MODEL_ACTIVE: VOYAGER_1_TRACKING";
-    }
-}
-// Start everything
-document.addEventListener('DOMContentLoaded', () => {
-    type();
-    updateHeroSat();
-    setInterval(updateHeroSat, 60000);
-});
-  </script>
-
+  // START MISSION CONTROL
+  document.addEventListener('DOMContentLoaded', () => {
+      typeEffect();
+      updateHeroSat();
+      setInterval(updateHeroSat, 60000); // Update every minute
+  });
+</script>
+  
 </body>
 
 </html>
