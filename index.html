@@ -807,11 +807,11 @@
       const lat = "42.2808"; // Ann Arbor
       const lng = "-83.7430";
       const alt = "256";
-      const radius = "70";
+      const radius = "30";
       const cat = "0";
       
       const n2yoUrl = `https://api.n2yo.com/rest/v1/satellite/above/${lat}/${lng}/${alt}/${radius}/${cat}/&apiKey=${apiKey}`;
-      const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(n2yoUrl)}`;
+      const n2yoUrl = `https://api.n2yo.com/rest/v1/satellite/above/${lat}/${lng}/256/30/0/&apiKey=${apiKey}`;
 
       try {
           const response = await fetch(proxyUrl);
@@ -819,11 +819,16 @@
           const data = await response.json();
 
           if (data && data.above && data.above.length > 0) {
-              const sat = data.above[0];
-              const az = sat.azimuth || sat.az_deg || 0; 
-              nameEl.innerText = `TRACKING: ${sat.satname}`;
-              statsEl.innerText = `ALT: ${Math.round(sat.satalt)}KM | AZ: ${Math.round(az)}° | ${data.above.length} ASSETS_IN_RANGE`;
-          } else {
+          // Pick a random satellite from the 'above' list instead of always the first one
+            const randomIndex = Math.floor(Math.random() * data.above.length);
+            const sat = data.above[randomIndex];
+    
+            const az = sat.azimuth || sat.az_deg || 0; 
+            nameEl.innerText = `TRACKING: ${sat.satname}`;
+            statsEl.innerText = `ALT: ${Math.round(sat.satalt)}KM | AZ: ${Math.round(az)}° | ${data.above.length} ASSETS_IN_RANGE`;
+          }
+        
+          else {
               // Success, but horizon is empty: Manual override for ISS
               nameEl.innerText = "TRACKING: ISS (ZARYA)";
               statsEl.innerText = "HISTORICAL MEAN ORBIT | ALT: 420KM | VEL: 7.66 KM/S";
