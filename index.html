@@ -24,6 +24,58 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <style>
+
+    /* Styling the word to look interactive */
+.custom-tooltip {
+  border-bottom: 2px dotted #0077b5; /* LinkedIn Blue dots */
+  cursor: help;
+  position: relative;
+  font-weight: 500;
+  color: #0077b5;
+}
+
+/* The hidden tooltip box */
+.custom-tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 125%; /* Positions the box above the word */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Small arrow pointing down to the word */
+.custom-tooltip::before {
+  content: "";
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+
+/* Show the box and arrow on hover */
+.custom-tooltip:hover::after,
+.custom-tooltip:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+    
     .custom-photo-layout {
   padding-left: 10px;
 }
@@ -449,7 +501,7 @@
               <div class="portfolio-content h-100">
                 <a href="assets/img/portfolio/isro.png" data-gallery="portfolio-gallery-app" class="glightbox"><img src="assets/img/portfolio/isro.png" class="img-fluid" alt=""></a>
                 <div class="portfolio-info">
-                  <h4><a href="portfolio-details-4.html" title="More Details">INTERNSHIP AND TRAINING​</a></h4>
+                  <h4><a href="portfolio-details-4.html" title="More Details"> The <span class="custom-tooltip" data-tooltip="Gaganaut: The official term for Indian astronauts, derived from the Sanskrit word 'Gagan' for sky.">Gaganaut</span> Assistant: Can a robot become the next essential crew member for our future in orbit? </a></h4>
                   <p>Space Applications Centre | AHEMDABAD</p>
                 </div>
               </div>
@@ -459,7 +511,7 @@
               <div class="portfolio-content h-100">
                 <a href="assets/img/portfolio/Star.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="assets/img/portfolio/Star.jpg" class="img-fluid" alt=""></a>
                 <div class="portfolio-info">
-                  <h4><a href="portfolio-details-1.html" title="More Details">TRAINING AND INTERNSHIP PROGRAM​</a></h4>
+                  <h4><a href="portfolio-details-1.html" title="More Details"> How do we prove a rocket is ready for the stars before it ever leaves the ground?​</a></h4>
                   <p>STAR Lab | SURAT​</p>
                 </div>
               </div>
@@ -469,7 +521,7 @@
               <div class="portfolio-content h-100">
                 <a href="assets/img/portfolio/DRDO.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="assets/img/portfolio/DRDO.jpg" class="img-fluid" alt=""></a>
                 <div class="portfolio-info">
-                  <h4><a href="portfolio-details.html" title="More Details">SUMMER TRAINING AND INTERNSHIP​</a></h4>
+                  <h4><a href="portfolio-details.html" title="More Details"> Can we spot a single misplaced wire before it becomes a mission-ending mistake?​</a></h4>
                   <p>Defence Laboratory Jodhpur - DRDO</p>
                 </div>
               </div>
