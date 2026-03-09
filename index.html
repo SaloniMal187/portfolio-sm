@@ -26,19 +26,20 @@
   <style>
 
     /* Styling the word to look interactive */
+<style>
+/* Updated Tooltips to your Theme Blue */
 .custom-tooltip {
-  border-bottom: 2px dotted #0077b5; /* LinkedIn Blue dots */
+  border-bottom: 2px dotted #99bbe1; 
   cursor: help;
   position: relative;
   font-weight: 500;
-  color: #0077b5;
+  color: #99bbe1;
 }
 
-/* The hidden tooltip box */
 .custom-tooltip::after {
   content: attr(data-tooltip);
   position: absolute;
-  bottom: 125%; /* Positions the box above the word */
+  bottom: 125%;
   left: 50%;
   transform: translateX(-50%);
   background-color: #333;
@@ -54,56 +55,16 @@
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-/* Small arrow pointing down to the word */
-.custom-tooltip::before {
-  content: "";
-  position: absolute;
-  bottom: 110%;
-  left: 50%;
-  transform: translateX(-50%);
-  border-width: 6px;
-  border-style: solid;
-  border-color: #333 transparent transparent transparent;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease;
-}
+.custom-photo-layout { padding-left: 10px; }
+.layout-item { position: relative; display: block; overflow: hidden; border-radius: 12px; text-decoration: none !important; }
+.layout-item img { width: 100%; object-fit: cover; height: 150px; transition: transform 0.4s ease; }
+.small-item img { height: 100px; }
 
-/* Show the box and arrow on hover */
-.custom-tooltip:hover::after,
-.custom-tooltip:hover::before {
-  opacity: 1;
-  visibility: visible;
-}
-    
-    .custom-photo-layout {
-  padding-left: 10px;
-}
-
-.layout-item {
-  position: relative;
-  display: block;
-  overflow: hidden;
-  border-radius: 12px;
-  text-decoration: none !important;
-}
-
-/* Increased heights to prevent clipping */
-.layout-item img {
-  width: 100%;
-  object-fit: cover;
-  height: 150px; /* Increased from 120px */
-  transition: transform 0.4s ease;
-}
-
-.small-item img {
-  height: 100px; /* Increased from 75px */
-}
-
+/* Portfolio Hover Overlay */
 .layout-caption {
   position: absolute;
   inset: 0;
-  background: rgba(0, 119, 181, 0.9); /* LinkedIn Blue */
+  background: rgba(153, 187, 225, 0.9); /* #99bbe1 with opacity */
   color: white;
   display: flex;
   align-items: center;
@@ -115,18 +76,10 @@
   transition: opacity 0.3s ease;
 }
 
-.layout-caption.mini {
-  font-size: 0.65rem;
-  line-height: 1.2;
-}
-
 .layout-item:hover .layout-caption { opacity: 1; }
 .layout-item:hover img { transform: scale(1.1); }
 
-/* Hero HUD & Engineering Grid */
-/* --- UPDATED HERO SECTION --- */
-/* --- UPDATED BLUE HERO SECTION --- */
-/* --- STEEL BLUE HERO THEME --- */
+/* --- HERO SECTION THEME: #99bbe1 --- */
 #hero {
   position: relative;
   overflow: hidden;
@@ -138,7 +91,6 @@
   perspective: 1000px;
 }
 
-/* 3D Horizon Grid in Steel Blue */
 .horizon-grid {
   position: absolute;
   width: 200%;
@@ -146,8 +98,8 @@
   bottom: -30%;
   left: -50%;
   background-image: 
-    linear-gradient(rgba(124, 175, 225, 0.15) 2px, transparent 2px),
-    linear-gradient(90deg, rgba(124, 175, 225, 0.15) 2px, transparent 2px);
+    linear-gradient(rgba(153, 187, 225, 0.15) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(153, 187, 225, 0.15) 2px, transparent 2px);
   background-size: 60px 60px;
   transform: rotateX(60deg);
   animation: move-grid 4s linear infinite;
@@ -155,12 +107,11 @@
   z-index: 1;
 }
 
-/* Interactive Steel Blue Glow */
 .cursor-glow {
   position: absolute;
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(124, 175, 225, 0.2) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(153, 187, 225, 0.2) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
   transform: translate(-50%, -50%);
@@ -169,104 +120,48 @@
 
 .mission-title {
   color: #fff;
-  text-shadow: 0 0 25px rgba(124, 175, 225, 0.4);
+  text-shadow: 0 0 25px rgba(153, 187, 225, 0.4);
   z-index: 3;
 }
 
 .typewriter-text {
-  color: #7CAFE1; 
-  border-right: 3px solid #7CAFE1;
+  color: #99bbe1; 
+  border-right: 3px solid #99bbe1;
   z-index: 3;
 }
 
 .sat-data-overlay {
   background: rgba(10, 25, 47, 0.85);
-  border: 1px solid rgba(124, 175, 225, 0.4);
-  box-shadow: 0 0 30px rgba(124, 175, 225, 0.1);
+  border: 1px solid rgba(153, 187, 225, 0.4);
+  box-shadow: 0 0 30px rgba(153, 187, 225, 0.1);
 }
 
 .glow-dot {
-  background-color: #7CAFE1;
-  animation: pulse-steel 2s infinite;
+  background-color: #99bbe1;
+  animation: pulse-theme 2s infinite;
 }
 
-@keyframes pulse-steel {
-  0% { box-shadow: 0 0 0 0 rgba(124, 175, 225, 0.7); }
-  70% { box-shadow: 0 0 0 10px rgba(124, 175, 225, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(124, 175, 225, 0); }
+@keyframes pulse-theme {
+  0% { box-shadow: 0 0 0 0 rgba(153, 187, 225, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(153, 187, 225, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(153, 187, 225, 0); }
 }
 
 .btn-get-started {
-  border: 1px solid #7CAFE1;
-  color: #7CAFE1;
+  border: 1px solid #99bbe1;
+  color: #99bbe1;
   background: transparent;
 }
 
-.btn-get-started:hover {
-  background: #7CAFE1;
-  color: #020617;
-  box-shadow: 0 0 20px rgba(124, 175, 225, 0.5);
-}
-/* Blue Scanline */
-#hero::after {
-  background: linear-gradient(0deg, transparent 0%, rgba(0, 212, 255, 0.05) 50%, transparent 100%);
-}
-
-
-   .project-strip {
-  background: #ffffff; /* Changed from deep blue to white */
-  padding: 40px 0;
-  overflow: hidden;
-  /* subtle light grey borders instead of green-tinted ones */
-  border-top: 1px solid #e2e8f0; 
-  border-bottom: 1px solid #e2e8f0;
-}
-
-.marquee-wrapper {
-  display: flex;
-  overflow: hidden;
-  user-select: none;
-}
-
-.marquee-content {
-  display: flex;
-  flex-shrink: 0;
-  gap: 20px;
-  min-width: 100%;
-  animation: scroll-marquee 30s linear infinite;
-}
-
-.marquee-wrapper:hover .marquee-content {
-  animation-play-state: paused;
-}
-
-@keyframes scroll-marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-.project-slide {
-  position: relative;
-  width: 250px; 
-  height: 150px;
-  flex-shrink: 0;
-  border-radius: 8px;
-  overflow: hidden;
-  /* darker border for contrast against white */
-  border: 1px solid #cbd5e1; 
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.project-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+/* --- PROJECT STRIP (SLIDER) THEME: #99bbe1 --- */
+.project-strip { background: #ffffff; padding: 40px 0; overflow: hidden; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; }
+.marquee-wrapper { display: flex; overflow: hidden; user-select: none; }
+.marquee-content { display: flex; flex-shrink: 0; gap: 20px; min-width: 100%; animation: scroll-marquee 30s linear infinite; }
 
 .slide-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 255, 150, 0.9); /* Solid green on hover */
+  background: rgba(153, 187, 225, 0.9); /* Replaced green with #99bbe1 */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -274,38 +169,164 @@
   transition: opacity 0.3s ease;
 }
 
-.slide-overlay span {
-  color: #020617; /* Dark text for readability over green */
-  font-weight: 800;
+.project-slide:hover {
+  transform: scale(1.05);
+  border-color: #99bbe1; /* Replaced green with #99bbe1 */
+  box-shadow: 0 10px 15px -3px rgba(153, 187, 225, 0.2);
+}
+
+.project-slide:hover .slide-overlay { opacity: 1; }
+</style><style>
+/* Updated Tooltips to your Theme Blue */
+.custom-tooltip {
+  border-bottom: 2px dotted #99bbe1; 
+  cursor: help;
+  position: relative;
+  font-weight: 500;
+  color: #99bbe1;
+}
+
+.custom-tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 6px;
   font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.custom-photo-layout { padding-left: 10px; }
+.layout-item { position: relative; display: block; overflow: hidden; border-radius: 12px; text-decoration: none !important; }
+.layout-item img { width: 100%; object-fit: cover; height: 150px; transition: transform 0.4s ease; }
+.small-item img { height: 100px; }
+
+/* Portfolio Hover Overlay */
+.layout-caption {
+  position: absolute;
+  inset: 0;
+  background: rgba(153, 187, 225, 0.9); /* #99bbe1 with opacity */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   padding: 10px;
-  text-transform: uppercase;
+  font-size: 0.8rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.layout-item:hover .layout-caption { opacity: 1; }
+.layout-item:hover img { transform: scale(1.1); }
+
+/* --- HERO SECTION THEME: #99bbe1 --- */
+#hero {
+  position: relative;
+  overflow: hidden;
+  background: #020617 !important; 
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px;
+}
+
+.horizon-grid {
+  position: absolute;
+  width: 200%;
+  height: 100%;
+  bottom: -30%;
+  left: -50%;
+  background-image: 
+    linear-gradient(rgba(153, 187, 225, 0.15) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(153, 187, 225, 0.15) 2px, transparent 2px);
+  background-size: 60px 60px;
+  transform: rotateX(60deg);
+  animation: move-grid 4s linear infinite;
+  mask-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0));
+  z-index: 1;
+}
+
+.cursor-glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(153, 187, 225, 0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.mission-title {
+  color: #fff;
+  text-shadow: 0 0 25px rgba(153, 187, 225, 0.4);
+  z-index: 3;
+}
+
+.typewriter-text {
+  color: #99bbe1; 
+  border-right: 3px solid #99bbe1;
+  z-index: 3;
+}
+
+.sat-data-overlay {
+  background: rgba(10, 25, 47, 0.85);
+  border: 1px solid rgba(153, 187, 225, 0.4);
+  box-shadow: 0 0 30px rgba(153, 187, 225, 0.1);
+}
+
+.glow-dot {
+  background-color: #99bbe1;
+  animation: pulse-theme 2s infinite;
+}
+
+@keyframes pulse-theme {
+  0% { box-shadow: 0 0 0 0 rgba(153, 187, 225, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(153, 187, 225, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(153, 187, 225, 0); }
+}
+
+.btn-get-started {
+  border: 1px solid #99bbe1;
+  color: #99bbe1;
+  background: transparent;
+}
+
+/* --- PROJECT STRIP (SLIDER) THEME: #99bbe1 --- */
+.project-strip { background: #ffffff; padding: 40px 0; overflow: hidden; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; }
+.marquee-wrapper { display: flex; overflow: hidden; user-select: none; }
+.marquee-content { display: flex; flex-shrink: 0; gap: 20px; min-width: 100%; animation: scroll-marquee 30s linear infinite; }
+
+.slide-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(153, 187, 225, 0.9); /* Replaced green with #99bbe1 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .project-slide:hover {
   transform: scale(1.05);
-  border-color: #00ff96;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border-color: #99bbe1; /* Replaced green with #99bbe1 */
+  box-shadow: 0 10px 15px -3px rgba(153, 187, 225, 0.2);
 }
 
-.project-slide:hover .slide-overlay {
-  opacity: 1;
-}
-
-    .portfolio-info h4 {
-  margin-bottom: 5px; /* Space between Title and Subtitle */
-}
-
-.project-subtitle {
-  font-size: 0.9rem;
-  font-style: italic;
-  color: #555; /* Slightly lighter than the title */
-  margin-bottom: 10px;
-  line-height: 1.4;
-  display: block; /* Ensures it sits on its own line */
-}
-  </style>
+.project-slide:hover .slide-overlay { opacity: 1; }
+</style>
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
@@ -354,8 +375,8 @@
   <div class="radar-sweep"></div>
   
   <div class="container text-center" style="z-index: 2;" data-aos="zoom-out">
-    <p style="letter-spacing: 5px; color: #00d4ff; font-size: 0.7rem; font-weight: 600; text-transform: uppercase;">
-        Aerospace Engineer
+    <p style="letter-spacing: 5px; color: #99bbe1; font-size: 0.7rem; font-weight: 600; text-transform: uppercase;">
+    Aerospace Engineer
     </p>
     
     <h1 class="mission-title">SALONI MALVIYA</h1>
@@ -364,8 +385,8 @@
         <div class="typewriter-text" id="typewriter-headline" style="font-size: 1.6rem;"></div>
     </div>
     
-    <div class="sat-data-overlay" style="margin-top: 40px; border: 1px solid rgba(0,255,150,0.5);">
-      <div class="d-flex align-items-center justify-content-center mb-1">
+  <div class="sat-data-overlay" style="margin-top: 40px; border: 1px solid rgba(153,187,225,0.5);">
+    <div class="d-flex align-items-center justify-content-center mb-1">
         <span class="glow-dot"></span> 
         <span id="sat-name" style="color: #fff; font-size: 1rem; font-family: 'Courier New', monospace;">ESTABLISHING GROUND LINK...</span>
       </div>
@@ -373,9 +394,9 @@
     </div>
 
     <div class="mt-5">
-        <a href="#about" class="btn-get-started" style="background: #00d4ff; color: #020617; padding: 15px 40px; text-decoration: none; border-radius: 5px; font-weight: 800; text-transform: uppercase; box-shadow: 0 0 20px rgba(0,255,150,0.4);">
+        <a href="#about" class="btn-get-started" style="background: #99bbe1; color: #020617; padding: 15px 40px; text-decoration: none; border-radius: 5px; font-weight: 800; text-transform: uppercase; box-shadow: 0 0 20px rgba(153,187,225,0.4);">
          Explore
-       </a>
+        </a>
     </div>
   </div>
 </section>
