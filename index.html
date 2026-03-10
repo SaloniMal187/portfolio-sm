@@ -27,7 +27,7 @@
 
     /* Styling the word to look interactive */
 <style>
-/* Updated Tooltips to your Theme Blue */
+/* 1. TOOLTIPS & LAYOUT */
 .custom-tooltip {
   border-bottom: 2px dotted #99bbe1; 
   cursor: help;
@@ -52,34 +52,9 @@
   visibility: hidden;
   transition: opacity 0.3s ease;
   z-index: 1000;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-.custom-photo-layout { padding-left: 10px; }
-.layout-item { position: relative; display: block; overflow: hidden; border-radius: 12px; text-decoration: none !important; }
-.layout-item img { width: 100%; object-fit: cover; height: 150px; transition: transform 0.4s ease; }
-.small-item img { height: 100px; }
-
-/* Portfolio Hover Overlay */
-.layout-caption {
-  position: absolute;
-  inset: 0;
-  background: rgba(153, 187, 225, 0.9); /* #99bbe1 with opacity */
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 10px;
-  font-size: 0.8rem;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.layout-item:hover .layout-caption { opacity: 1; }
-.layout-item:hover img { transform: scale(1.1); }
-
-/* --- HERO SECTION THEME: #99bbe1 --- */
+/* 2. HERO SECTION */
 #hero {
   position: relative;
   overflow: hidden;
@@ -107,37 +82,29 @@
   z-index: 1;
 }
 
-.cursor-glow {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(153, 187, 225, 0.2) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  z-index: 1;
+@keyframes move-grid {
+  from { background-position: 0 0; }
+  to { background-position: 0 60px; }
 }
 
-.mission-title {
-  color: #fff;
-  text-shadow: 0 0 25px rgba(153, 187, 225, 0.4);
-  z-index: 3;
-}
-
-.typewriter-text {
-  color: #99bbe1; 
-  border-right: 3px solid #99bbe1;
-  z-index: 3;
-}
+.mission-title { color: #fff; text-shadow: 0 0 25px rgba(153, 187, 225, 0.4); z-index: 3; }
+.typewriter-text { color: #99bbe1; border-right: 3px solid #99bbe1; z-index: 3; }
 
 .sat-data-overlay {
   background: rgba(10, 25, 47, 0.85);
   border: 1px solid rgba(153, 187, 225, 0.4);
   box-shadow: 0 0 30px rgba(153, 187, 225, 0.1);
+  padding: 10px 20px;
+  border-radius: 8px;
 }
 
 .glow-dot {
   background-color: #99bbe1;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px;
   animation: pulse-theme 2s infinite;
 }
 
@@ -147,171 +114,56 @@
   100% { box-shadow: 0 0 0 0 rgba(153, 187, 225, 0); }
 }
 
-.btn-get-started {
-  border: 1px solid #99bbe1;
-  color: #99bbe1;
-  background: transparent;
-}
-
-/* --- PROJECT STRIP (SLIDER) THEME: #99bbe1 --- */
-.project-strip { background: #ffffff; padding: 40px 0; overflow: hidden; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; }
-.marquee-wrapper { display: flex; overflow: hidden; user-select: none; }
-.marquee-content { display: flex; flex-shrink: 0; gap: 20px; min-width: 100%; animation: scroll-marquee 30s linear infinite; }
-
-.slide-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(153, 187, 225, 0.9); /* Replaced green with #99bbe1 */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.project-slide:hover {
-  transform: scale(1.05);
-  border-color: #99bbe1; /* Replaced green with #99bbe1 */
-  box-shadow: 0 10px 15px -3px rgba(153, 187, 225, 0.2);
-}
-
-.project-slide:hover .slide-overlay { opacity: 1; }
-</style><style>
-/* Updated Tooltips to your Theme Blue */
-.custom-tooltip {
-  border-bottom: 2px dotted #99bbe1; 
-  cursor: help;
-  position: relative;
-  font-weight: 500;
-  color: #99bbe1;
-}
-
-.custom-tooltip::after {
-  content: attr(data-tooltip);
-  position: absolute;
-  bottom: 125%;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #333;
-  color: #fff;
-  padding: 8px 12px;
-  border-radius: 6px;
-  font-size: 0.75rem;
-  white-space: nowrap;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease;
-  z-index: 1000;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
-.custom-photo-layout { padding-left: 10px; }
-.layout-item { position: relative; display: block; overflow: hidden; border-radius: 12px; text-decoration: none !important; }
-.layout-item img { width: 100%; object-fit: cover; height: 150px; transition: transform 0.4s ease; }
-.small-item img { height: 100px; }
-
-/* Portfolio Hover Overlay */
-.layout-caption {
-  position: absolute;
-  inset: 0;
-  background: rgba(153, 187, 225, 0.9); /* #99bbe1 with opacity */
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 10px;
-  font-size: 0.8rem;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.layout-item:hover .layout-caption { opacity: 1; }
-.layout-item:hover img { transform: scale(1.1); }
-
-/* --- HERO SECTION THEME: #99bbe1 --- */
-#hero {
-  position: relative;
+/* 3. THE MOVING PROJECT STRIP (The fix for your tiles) */
+.project-strip {
+  background: #ffffff;
+  padding: 30px 0;
   overflow: hidden;
-  background: #020617 !important; 
-  height: 100vh;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.marquee-wrapper {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  perspective: 1000px;
+  overflow: hidden;
 }
 
-.horizon-grid {
-  position: absolute;
-  width: 200%;
+.marquee-content {
+  display: flex;
+  flex-shrink: 0;
+  gap: 20px;
+  min-width: 100%;
+  animation: scroll-marquee 30s linear infinite;
+}
+
+/* This keyframe makes the items MOVE */
+@keyframes scroll-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* This fixes the SIZE of the tiles */
+.project-slide {
+  position: relative;
+  width: 250px; 
+  height: 150px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #cbd5e1;
+  transition: transform 0.3s ease;
+}
+
+.project-slide img {
+  width: 100%;
   height: 100%;
-  bottom: -30%;
-  left: -50%;
-  background-image: 
-    linear-gradient(rgba(153, 187, 225, 0.15) 2px, transparent 2px),
-    linear-gradient(90deg, rgba(153, 187, 225, 0.15) 2px, transparent 2px);
-  background-size: 60px 60px;
-  transform: rotateX(60deg);
-  animation: move-grid 4s linear infinite;
-  mask-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0));
-  z-index: 1;
+  object-fit: cover;
 }
-
-.cursor-glow {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(153, 187, 225, 0.2) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-}
-
-.mission-title {
-  color: #fff;
-  text-shadow: 0 0 25px rgba(153, 187, 225, 0.4);
-  z-index: 3;
-}
-
-.typewriter-text {
-  color: #99bbe1; 
-  border-right: 3px solid #99bbe1;
-  z-index: 3;
-}
-
-.sat-data-overlay {
-  background: rgba(10, 25, 47, 0.85);
-  border: 1px solid rgba(153, 187, 225, 0.4);
-  box-shadow: 0 0 30px rgba(153, 187, 225, 0.1);
-}
-
-.glow-dot {
-  background-color: #99bbe1;
-  animation: pulse-theme 2s infinite;
-}
-
-@keyframes pulse-theme {
-  0% { box-shadow: 0 0 0 0 rgba(153, 187, 225, 0.7); }
-  70% { box-shadow: 0 0 0 10px rgba(153, 187, 225, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(153, 187, 225, 0); }
-}
-
-.btn-get-started {
-  border: 1px solid #99bbe1;
-  color: #99bbe1;
-  background: transparent;
-}
-
-/* --- PROJECT STRIP (SLIDER) THEME: #99bbe1 --- */
-.project-strip { background: #ffffff; padding: 40px 0; overflow: hidden; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; }
-.marquee-wrapper { display: flex; overflow: hidden; user-select: none; }
-.marquee-content { display: flex; flex-shrink: 0; gap: 20px; min-width: 100%; animation: scroll-marquee 30s linear infinite; }
 
 .slide-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(153, 187, 225, 0.9); /* Replaced green with #99bbe1 */
+  background: rgba(153, 187, 225, 0.9);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -319,13 +171,17 @@
   transition: opacity 0.3s ease;
 }
 
-.project-slide:hover {
-  transform: scale(1.05);
-  border-color: #99bbe1; /* Replaced green with #99bbe1 */
-  box-shadow: 0 10px 15px -3px rgba(153, 187, 225, 0.2);
+.slide-overlay span {
+  color: #020617;
+  font-weight: 800;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  text-align: center;
 }
 
+.project-slide:hover { transform: scale(1.05); border-color: #99bbe1; }
 .project-slide:hover .slide-overlay { opacity: 1; }
+.marquee-wrapper:hover .marquee-content { animation-play-state: paused; }
 </style>
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
