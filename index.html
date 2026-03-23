@@ -1090,4 +1090,13 @@
     frame();
   })();
 
-  /* ═══════════════════════════════════════════════════
+  /* 6. BOOT */
+  document.addEventListener('DOMContentLoaded', () => {
+    typeEffect();
+    updateHeroSat();
+    setInterval(updateHeroSat, 60000);
+  });
+  </script>
+
+</body>
+</html>
