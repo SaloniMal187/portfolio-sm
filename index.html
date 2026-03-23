@@ -343,24 +343,24 @@
 
         <h1 class="mission-title">SALONI MALVIYA</h1>
 
-        <div style="height: 50px; display: flex; justify-content: flex-start; align-items: center; margin-top: 10px;">
+        <div style="height: 50px; display: flex; justify-content: center; align-items: center; margin-top: 10px;">
           <div class="typewriter-text" id="typewriter-headline" style="font-size: 1.6rem;"></div>
         </div>
 
         <!-- Satellite tracking overlay -->
-        <div class="sat-data-overlay" style="margin-top: 80px; text-align: left; max-width: 480px; margin-left: auto; margin-right: auto;">
-          <div class="d-flex align-items-center mb-2">
+        <div class="sat-data-overlay" style="margin-top: 120px; text-align: center; max-width: 480px; margin-left: auto; margin-right: auto;">
+          <div class="d-flex align-items-center justify-content-center mb-2">
             <span class="glow-dot"></span>
             <span id="sat-name" style="color:#fff; font-size:1rem; font-family:'Courier New',monospace; letter-spacing:1px;">ESTABLISHING GROUND LINK...</span>
           </div>
 
-          <p id="sat-human" style="color:#cbd5e1; font-size:0.78rem; margin:4px 0 6px; text-align:left; font-style:italic; line-height:1.5;">
+          <p id="sat-human" style="color:#cbd5e1; font-size:0.78rem; margin:4px 0 6px; text-align:center; font-style:italic; line-height:1.5;">
             A satellite is currently passing over Ann Arbor — right above you, right now.
           </p>
 
-          <small id="sat-stats" style="color:#94a3b8; font-family:'Courier New',monospace; display:block; text-align:left;"></small>
+          <small id="sat-stats" style="color:#94a3b8; font-family:'Courier New',monospace; display:block; text-align:center;"></small>
 
-          <div style="display:flex; justify-content:flex-start; gap:18px; margin-top:10px; flex-wrap:wrap;">
+          <div style="display:flex; justify-content:center; gap:18px; margin-top:10px; flex-wrap:wrap;">
             <span class="custom-tooltip" data-tooltip="Height above Earth's surface — most satellites orbit 400–800 km up" style="font-size:0.7rem;">ⓘ ALT = Altitude</span>
             <span class="custom-tooltip" data-tooltip="Compass direction the satellite is travelling across the sky (0°=North, 90°=East)" style="font-size:0.7rem;">ⓘ AZ = Azimuth</span>
             <span class="custom-tooltip" data-tooltip="Total number of tracked objects (satellites + debris) visible from this location right now" style="font-size:0.7rem;">ⓘ ASSETS = Tracked Objects</span>
@@ -913,7 +913,7 @@
     window.addEventListener('resize', resize);
 
     const CX = () => canvas.width  * 0.5;
-    const CY = () => canvas.height * 0.45;
+    const CY = () => canvas.height * 0.32;
 
     /* Orbit definitions — a/b as fraction of canvas half-dimensions */
     const ORBITS = [
