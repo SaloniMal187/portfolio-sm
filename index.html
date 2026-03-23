@@ -56,7 +56,7 @@
       height: 100vh;
       display: flex;
       align-items: center;
-      justify-content: center  ;
+      justify-content: center;
     }
 
     /* Orbital canvas sits as the deepest background layer */
@@ -336,7 +336,7 @@
       </div>
 
       <!-- Layer 3: main text content -->
-      <div class="container" style="position:relative; z-index:3; display:flex; flex-direction:column; align-items:flex-start; padding-left: 5%; padding-bottom: 6vh; padding-top: 0;" data-aos="zoom-out">
+      <div class="container text-center" style="position:relative; z-index:3;" data-aos="zoom-out">
         <p style="letter-spacing: 5px; color: #99bbe1; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; margin-bottom: 6px;">
           Aerospace Engineer
         </p>
@@ -348,7 +348,7 @@
         </div>
 
         <!-- Satellite tracking overlay -->
-        <div class="sat-data-overlay" style="margin-top: 28px; text-align: left; max-width: 480px;">
+        <div class="sat-data-overlay" style="margin-top: 80px; text-align: left; max-width: 480px; margin-left: auto; margin-right: auto;">
           <div class="d-flex align-items-center mb-2">
             <span class="glow-dot"></span>
             <span id="sat-name" style="color:#fff; font-size:1rem; font-family:'Courier New',monospace; letter-spacing:1px;">ESTABLISHING GROUND LINK...</span>
@@ -913,7 +913,7 @@
     window.addEventListener('resize', resize);
 
     const CX = () => canvas.width  * 0.5;
-    const CY = () => canvas.height * 0.38;
+    const CY = () => canvas.height * 0.45;
 
     /* Orbit definitions — a/b as fraction of canvas half-dimensions */
     const ORBITS = [
