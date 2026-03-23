@@ -55,8 +55,8 @@
       background: #020617 !important;
       height: 100vh;
       display: flex;
-      align-items: center;
-      justify-content: center;
+      align-items: flex-end;
+      justify-content: flex-start;
     }
 
     /* Orbital canvas sits as the deepest background layer */
@@ -94,7 +94,7 @@
 
     /* ── SAT OVERLAY BOX ── */
     .sat-data-overlay {
-      background: rgba(2, 6, 23, 0);
+      background: rgba(2, 6, 23, 0.55);
       border: 1px solid rgba(153, 187, 225, 0.25);
       box-shadow: none;
       padding: 14px 22px;
@@ -336,33 +336,47 @@
       </div>
 
       <!-- Layer 3: main text content -->
-      <div class="container text-center" style="position:relative; z-index:3;" data-aos="zoom-out">
-        <p style="letter-spacing: 5px; color: #99bbe1; font-size: 0.7rem; font-weight: 600; text-transform: uppercase;">
+      <div class="container" style="position:relative; z-index:3; display:flex; flex-direction:column; align-items:flex-start; padding-left: 5%; padding-bottom: 6vh; padding-top: 0;" data-aos="zoom-out">
+        <p style="letter-spacing: 5px; color: #99bbe1; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; margin-bottom: 6px;">
           Aerospace Engineer
         </p>
 
         <h1 class="mission-title">SALONI MALVIYA</h1>
 
-        <div style="height: 50px; display: flex; justify-content: center; align-items: center; margin-top: 10px;">
+        <div style="height: 50px; display: flex; justify-content: flex-start; align-items: center; margin-top: 10px;">
           <div class="typewriter-text" id="typewriter-headline" style="font-size: 1.6rem;"></div>
         </div>
 
         <!-- Satellite tracking overlay -->
-        <div class="sat-data-overlay">
-          <div class="d-flex align-items-center justify-content-center mb-2">
+        <div class="sat-data-overlay" style="margin-top: 28px; text-align: left; max-width: 480px;">
+          <div class="d-flex align-items-center mb-2">
             <span class="glow-dot"></span>
             <span id="sat-name" style="color:#fff; font-size:1rem; font-family:'Courier New',monospace; letter-spacing:1px;">ESTABLISHING GROUND LINK...</span>
           </div>
 
-          <p id="sat-human" style="color:#cbd5e1; font-size:0.78rem; margin:4px 0 6px; text-align:center; font-style:italic; line-height:1.5;">
+          <p id="sat-human" style="color:#cbd5e1; font-size:0.78rem; margin:4px 0 6px; text-align:left; font-style:italic; line-height:1.5;">
             A satellite is currently passing over Ann Arbor — right above you, right now.
           </p>
 
-          <small id="sat-stats" style="color:#94a3b8; font-family:'Courier New',monospace; display:block; text-align:center;"></small>
+          <small id="sat-stats" style="color:#94a3b8; font-family:'Courier New',monospace; display:block; text-align:left;"></small>
 
+          <div style="display:flex; justify-content:flex-start; gap:18px; margin-top:10px; flex-wrap:wrap;">
+            <span class="custom-tooltip" data-tooltip="Height above Earth's surface — most satellites orbit 400–800 km up" style="font-size:0.7rem;">ⓘ ALT = Altitude</span>
+            <span class="custom-tooltip" data-tooltip="Compass direction the satellite is travelling across the sky (0°=North, 90°=East)" style="font-size:0.7rem;">ⓘ AZ = Azimuth</span>
+            <span class="custom-tooltip" data-tooltip="Total number of tracked objects (satellites + debris) visible from this location right now" style="font-size:0.7rem;">ⓘ ASSETS = Tracked Objects</span>
+          </div>
+
+          <div style="margin-top:12px; padding-top:10px; border-top:1px solid rgba(153,187,225,0.2); text-align:center;">
+            <p style="color:#94a3b8; font-size:0.72rem; margin:0; line-height:1.6;">
+              Not all of those <em>assets</em> are active satellites — many are dead rockets and fragments.
+              <a href="project-debris.html" style="color:#99bbe1; text-decoration:underline dotted; font-weight:600;">
+                See how I'm working to track them →
+              </a>
+            </p>
+          </div>
         </div>
 
-        <div class="mt-5">
+        <div class="mt-4">
           <a href="#about" class="btn-get-started" style="background:#99bbe1; color:#020617; padding:15px 40px; text-decoration:none; border-radius:5px; font-weight:800; text-transform:uppercase; box-shadow:0 0 20px rgba(153,187,225,0.4);">
             Explore
           </a>
@@ -899,7 +913,7 @@
     window.addEventListener('resize', resize);
 
     const CX = () => canvas.width  * 0.5;
-    const CY = () => canvas.height * 0.52;
+    const CY = () => canvas.height * 0.38;
 
     /* Orbit definitions — a/b as fraction of canvas half-dimensions */
     const ORBITS = [
