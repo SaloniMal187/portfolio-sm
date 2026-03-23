@@ -75,7 +75,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at center, transparent 20%, rgba(2, 6, 23, 0.55) 100%);
+      background: radial-gradient(ellipse at center, transparent 20%, rgba(2, 6, 23, 0.50) 100%);
       z-index: 1;
       pointer-events: none;
     }
@@ -94,7 +94,7 @@
 
     /* ── SAT OVERLAY BOX ── */
     .sat-data-overlay {
-      background: rgba(2, 6, 23, 0.25);
+      background: rgba(2, 6, 23, 0.55);
       border: 1px solid rgba(153, 187, 225, 0.25);
       box-shadow: none;
       padding: 14px 22px;
@@ -413,17 +413,7 @@
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════
-         MISSION BRIDGE BANNER — about → portfolio
-    ═══════════════════════════════════════════════ -->
-    <div class="mission-bridge" data-aos="fade-up">
-      <div class="inner">
-        <blockquote>
-          The live satellite feed above isn't just a widget — it's the exact problem I'm working to solve.
-        </blockquote>
-        <a href="#portfolio" class="cta-btn">View Projects</a>
-      </div>
-    </div>
+
 
     <!-- ═══════════════════════════════
          PROJECT MARQUEE STRIP
@@ -927,12 +917,12 @@
 
     /* Orbit definitions — a/b as fraction of canvas half-dimensions */
     const ORBITS = [
-      { a: 0.55, b: 0.18, tilt: -8,  color: '#ef4444', alpha: 0.55, count: 20, type: 'debris',    speed: 0.00080 },
-      { a: 0.62, b: 0.26, tilt:  12, color: '#99bbe1', alpha: 0.90, count:  7, type: 'satellite', speed: 0.00060 },
-      { a: 0.75, b: 0.38, tilt: -20, color: '#99bbe1', alpha: 0.65, count:  5, type: 'satellite', speed: 0.00030 },
-      { a: 0.68, b: 0.30, tilt:  35, color: '#f59e0b', alpha: 0.60, count:  5, type: 'rocket',    speed: 0.00040 },
-      { a: 0.58, b: 0.55, tilt:  80, color: '#ef4444', alpha: 0.40, count: 10, type: 'debris',    speed: 0.00050 },
-      { a: 0.90, b: 0.80, tilt:   2, color: '#99bbe1', alpha: 0.35, count:  4, type: 'satellite', speed: 0.00015 },
+      { a: 0.55, b: 0.18, tilt: -8,  color: '#ef4444', alpha: 0.85, count: 20, type: 'debris',    speed: 0.00080 },
+      { a: 0.62, b: 0.26, tilt:  12, color: '#99bbe1', alpha: 1.00, count:  7, type: 'satellite', speed: 0.00060 },
+      { a: 0.75, b: 0.38, tilt: -20, color: '#99bbe1', alpha: 0.90, count:  5, type: 'satellite', speed: 0.00030 },
+      { a: 0.68, b: 0.30, tilt:  35, color: '#f59e0b', alpha: 0.85, count:  5, type: 'rocket',    speed: 0.00040 },
+      { a: 0.58, b: 0.55, tilt:  80, color: '#ef4444', alpha: 0.70, count: 10, type: 'debris',    speed: 0.00050 },
+      { a: 0.90, b: 0.80, tilt:   2, color: '#99bbe1', alpha: 0.65, count:  4, type: 'satellite', speed: 0.00015 },
     ];
 
     const objects = [];
@@ -952,7 +942,7 @@
           stars = Array.from({ length: 130 }, () => ({
             x: Math.random(), y: Math.random(),
             r: Math.random() * 1.1 + 0.3,
-            a: Math.random() * 0.55 + 0.15,
+            a: Math.random() * 0.7 + 0.3,
           }));
         }
         stars.forEach(s => {
@@ -989,7 +979,7 @@
         ctx.beginPath();
         ctx.ellipse(0, 0, ax, bx, 0, 0, Math.PI * 2);
         ctx.strokeStyle = orb.color;
-        ctx.globalAlpha = 0.07;
+        ctx.globalAlpha = 0.18;
         ctx.lineWidth = 0.5;
         ctx.stroke();
         ctx.restore();
