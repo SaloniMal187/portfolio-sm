@@ -62,9 +62,11 @@
     /* Orbital canvas sits as the deepest background layer */
     #orbital-canvas {
       position: absolute;
-      inset: 0;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
+      display: block;
       z-index: 0;
     }
 
@@ -134,8 +136,8 @@
 
     /* ── FADE BRIDGE (hero → about) ── */
     .hero-fade-bridge {
-      height: 20px;
-      background: linear-gradient(to bottom, #020617 0%, #ffffff 100%);
+      height: 40px;
+      background: linear-gradient(to bottom, #020617 0%, #f8f9fa 100%);
       margin-top: -1px;
       position: relative;
       z-index: 1;
@@ -907,17 +909,18 @@
   /* ════════════════════════════════════════════════════
      5. ORBITAL CANVAS BACKGROUND
   ════════════════════════════════════════════════════ */
-  (function initOrbitalCanvas() {
+  function initOrbitalCanvas() {
     const canvas = document.getElementById('orbital-canvas');
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
 
     function resize() {
-      canvas.width  = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
+      const hero = document.getElementById('hero');
+      canvas.width  = hero ? hero.offsetWidth  : window.innerWidth;
+      canvas.height = hero ? hero.offsetHeight : window.innerHeight;
     }
     resize();
-    window.addEventListener('resize', () => { resize(); drawStars._done = false; });
+    window.addEventListener('resize', resize);
 
     const CX = () => canvas.width  * 0.5;
     const CY = () => canvas.height * 0.52;
@@ -1088,13 +1091,14 @@
       requestAnimationFrame(frame);
     }
     frame();
-  })();
+  }
 
   /* 6. BOOT */
   document.addEventListener('DOMContentLoaded', () => {
     typeEffect();
     updateHeroSat();
     setInterval(updateHeroSat, 60000);
+    initOrbitalCanvas();
   });
   </script>
 
