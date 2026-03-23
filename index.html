@@ -73,7 +73,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at center, transparent 40%, rgba(2, 6, 23, 0.65) 100%);
+      background: radial-gradient(ellipse at center, transparent 20%, rgba(2, 6, 23, 0.50) 100%);
       z-index: 1;
       pointer-events: none;
     }
@@ -92,13 +92,15 @@
 
     /* ── SAT OVERLAY BOX ── */
     .sat-data-overlay {
-      background: rgba(10, 25, 47, 0.82);
-      border: 1px solid rgba(153, 187, 225, 0.4);
-      box-shadow: 0 0 30px rgba(153, 187, 225, 0.08);
+      background: rgba(2, 6, 23, 0.55);
+      border: 1px solid rgba(153, 187, 225, 0.25);
+      box-shadow: none;
       padding: 14px 22px;
       border-radius: 10px;
       max-width: 560px;
       margin: 40px auto 0;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
     }
 
     .glow-dot {
@@ -132,8 +134,8 @@
 
     /* ── FADE BRIDGE (hero → about) ── */
     .hero-fade-bridge {
-      height: 90px;
-      background: linear-gradient(to bottom, #020617 0%, #ffffff 100%);
+      height: 40px;
+      background: linear-gradient(to bottom, #020617 0%, #f8f9fa 100%);
       margin-top: -1px;
       position: relative;
       z-index: 1;
@@ -737,7 +739,7 @@
             </div>
             <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="500">
               <i class="bi bi-envelope flex-shrink-0"></i>
-              <div><h3>Email</h3><p>msaloni@umich.edu</p></div>
+              <div><h3>Email</h3><p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0b66786a676465624b7e66626863256e6f7e">[email&#160;protected]</a></p></div>
             </div>
           </div>
           <div class="col-lg-8">
@@ -808,7 +810,7 @@
           <p>Ann Arbor, MI 48109</p>
           <p>United States</p>
           <p class="mt-4"><strong>Phone:</strong> <span>+1 73427 25157</span></p>
-          <p><strong>Email:</strong> <span>msaloni@umich.edu</span></p>
+          <p><strong>Email:</strong> <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4b26382a272425220b3e26222823652e2f3e">[email&#160;protected]</a></span></p>
         </div>
       </div>
     </div>
@@ -820,7 +822,7 @@
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
   <div id="preloader"></div>
 
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
@@ -922,12 +924,12 @@
 
     /* Orbit definitions — a/b as fraction of canvas half-dimensions */
     const ORBITS = [
-      { a: 0.28, b: 0.10, tilt: -8,  color: '#ef4444', alpha: 0.50, count: 20, type: 'debris',    speed: 0.00080 },
-      { a: 0.33, b: 0.14, tilt:  12, color: '#99bbe1', alpha: 0.85, count:  7, type: 'satellite', speed: 0.00060 },
-      { a: 0.43, b: 0.20, tilt: -20, color: '#99bbe1', alpha: 0.60, count:  5, type: 'satellite', speed: 0.00030 },
-      { a: 0.37, b: 0.16, tilt:  35, color: '#f59e0b', alpha: 0.55, count:  5, type: 'rocket',    speed: 0.00040 },
-      { a: 0.31, b: 0.29, tilt:  80, color: '#ef4444', alpha: 0.35, count: 10, type: 'debris',    speed: 0.00050 },
-      { a: 0.54, b: 0.48, tilt:   2, color: '#99bbe1', alpha: 0.40, count:  4, type: 'satellite', speed: 0.00015 },
+      { a: 0.55, b: 0.18, tilt: -8,  color: '#ef4444', alpha: 0.55, count: 20, type: 'debris',    speed: 0.00080 },
+      { a: 0.62, b: 0.26, tilt:  12, color: '#99bbe1', alpha: 0.90, count:  7, type: 'satellite', speed: 0.00060 },
+      { a: 0.75, b: 0.38, tilt: -20, color: '#99bbe1', alpha: 0.65, count:  5, type: 'satellite', speed: 0.00030 },
+      { a: 0.68, b: 0.30, tilt:  35, color: '#f59e0b', alpha: 0.60, count:  5, type: 'rocket',    speed: 0.00040 },
+      { a: 0.58, b: 0.55, tilt:  80, color: '#ef4444', alpha: 0.40, count: 10, type: 'debris',    speed: 0.00050 },
+      { a: 0.90, b: 0.80, tilt:   2, color: '#99bbe1', alpha: 0.35, count:  4, type: 'satellite', speed: 0.00015 },
     ];
 
     const objects = [];
@@ -1088,15 +1090,4 @@
     frame();
   })();
 
-  /* ════════════════════════════════════════════════════
-     6. BOOT
-  ════════════════════════════════════════════════════ */
-  document.addEventListener('DOMContentLoaded', () => {
-    typeEffect();
-    updateHeroSat();
-    setInterval(updateHeroSat, 60000);
-  });
-  </script>
-
-</body>
-</html>
+  /* ═══════════════════════════════════════════════════
