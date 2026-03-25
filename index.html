@@ -284,35 +284,19 @@
     }
 
      /* ── PORTFOLIO CARDS — even height, no cropping ── */
-.portfolio-content {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  background: #fff; /* Ensures a consistent card look */
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.portfolio-content a.glightbox img {
-  width: 100%;
-  height: 180px;
-  object-fit: contain;
-  background: #ffffff;
-}
-
 .portfolio-info {
-  /* REMOVED: height: 140px and overflow: hidden */
-  min-height: 140px; /* Keeps a minimum size for alignment */
+  min-height: 140px;
   display: flex;
   flex-direction: column;
-  padding: 15px 12px; /* Slightly more padding for readability */
+  padding: 15px 12px;
+  background: #fff;
+  transition: all 0.4s ease; /* Smooth transition for the hover effect */
 }
 
 .portfolio-info h4 {
-  font-size: 0.95rem; /* Slightly larger for your key projects */
+  font-size: 0.95rem;
   line-height: 1.4;
   margin-bottom: 8px;
-  /* REMOVED: -webkit-line-clamp and overflow: hidden */
   display: block; 
   color: #020617;
 }
@@ -323,12 +307,37 @@
   color: #64748b;
   margin: 0;
   line-height: 1.5;
-  /* Keep the clamp on the subtitle if you want to prevent 
-     the cards from getting TOO long, or remove it too: */
+  /* Default state: Truncated to 3 lines */
   display: -webkit-box;
   -webkit-line-clamp: 3; 
   -webkit-box-orient: vertical;
   overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* ── HOVER STATE ── */
+.portfolio-item:hover .portfolio-info {
+  background-color: #f8fafc; /* Slight tint change to show it's active */
+}
+
+.portfolio-item:hover .project-subtitle,
+.portfolio-item:hover .portfolio-info p {
+  /* Reveal full text on hover */
+  -webkit-line-clamp: unset; 
+  display: block;
+  overflow: visible;
+  color: #334155; /* Darken text slightly for better readability */
+}
+
+/* Optional: Subtle shadow lift on the whole card */
+.portfolio-content {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio-item:hover .portfolio-content {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(153, 187, 225, 0.2);
+  z-index: 10; /* Ensures the expanding card stays on top of neighbors */
 }
   </style>
 
