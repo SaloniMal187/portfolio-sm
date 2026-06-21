@@ -1,77 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Portfolio Details - Remember Bootstrap Template</title>
+  <title>FGM Vibration Analysis | Saloni Malviya</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
-
   <style>
-  /* 1. Set the slider background to white */
-  .portfolio-details-slider {
-    background-color: #ffffff !important;
-    max-height: 70vh; /* Keeps it on one screen as requested earlier */
-    overflow: hidden;
+  .fgm-visualizer-wrap {
+    width: 100%;
+    background: #ffffff;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 0 0 8px 0;
   }
-
-  /* 2. Center the content inside each slide */
-  .swiper-slide {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    background-color: #ffffff !important;
+  #fgm-three-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+    cursor: grab;
   }
-
-  /* 3. Ensure images/videos don't overflow and stay centered */
-  .swiper-slide img, 
-  .swiper-slide video {
-    max-height: 70vh !important;
-    width: auto !important;
-    max-width: 100%;
-    object-fit: contain; /* Prevents cropping */
-  }
-</style>
+  #fgm-three-canvas:active { cursor: grabbing; }
+  </style>
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Remember
-  * Template URL: https://bootstrapmade.com/remember-free-multipurpose-bootstrap-template/
-  * Updated: Aug 07 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
-
 <body class="portfolio-details-page">
-
   <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
-
       <a href="index.html" class="logo d-flex align-items-center me-auto">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
         <img src="assets/img/Frame 2.png" class="img-fluid" alt="">
       </a>
-
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="index.html#hero" class="active">Home</a></li>
@@ -83,131 +54,259 @@
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
-
     </div>
   </header>
 
   <main class="main">
-
     <!-- Page Title -->
     <div class="page-title light-background">
       <div class="container d-lg-flex justify-content-between align-items-center">
-        <h1 class="mb-2 mb-lg-0">FUNCTIONALLY GRADED MATERIAL (FGM)​</h1>
+        <h1 class="mb-2 mb-lg-0">Functionally Graded Material (FGM)</h1>
         <nav class="breadcrumbs">
           <ol>
             <li><a href="index.html">Home</a></li>
-            <li class="current">FUNCTIONALLY GRADED MATERIAL (FGM)</li>
+            <li class="current">Functionally Graded Material (FGM)</li>
           </ol>
         </nav>
       </div>
-    </div><!-- End Page Title -->
+    </div>
 
     <!-- Portfolio Details Section -->
     <section id="portfolio-details" class="portfolio-details section">
-
       <div class="container" data-aos="fade-up">
 
-        <div class="portfolio-details-slider swiper init-swiper">
-          <script type="application/json" class="swiper-config">
-            {
-              "loop": true,
-              "speed": 600,
-              "autoplay": {
-                "delay": 5000
-              },
-              "slidesPerView": "auto",
-              "navigation": {
-                "nextEl": ".swiper-button-next",
-                "prevEl": ".swiper-button-prev"
-              },
-              "pagination": {
-                "el": ".swiper-pagination",
-                "type": "bullets",
-                "clickable": true
-              }
-            }
-          </script>
-          <div class="swiper-wrapper align-items-center">
+        <!-- ── 3D VISUALIZER replaces the swiper ── -->
+        <div class="fgm-visualizer-wrap">
 
-            <div class="swiper-slide">
-              <img src="assets/img/portfolio/FGM.jpg" alt="">
+          <!-- 3D canvas -->
+          <div style="position:relative; width:100%; height:420px; background:#fafafa; border-radius:10px; overflow:hidden; border:1px solid #ebebeb;">
+            <canvas id="fgm-three-canvas"></canvas>
+            <div style="position:absolute; top:10px; left:14px; font-size:11px; color:#aaa; letter-spacing:0.03em;">Drag to rotate · scroll to zoom</div>
+            <div id="fgm-modeBadge" style="position:absolute; top:10px; right:14px; font-size:11px; color:#555; background:#fff; padding:4px 10px; border-radius:6px; border:1px solid #e0e0e0;">mode m=1, n=1</div>
+          </div>
+
+          <!-- Controls + chart row -->
+          <div class="row mt-3 gy-3">
+
+            <!-- Sliders -->
+            <div class="col-lg-6">
+              <div class="row g-2">
+                <div class="col-6">
+                  <div class="mb-2">
+                    <div style="display:flex;justify-content:space-between;font-size:12px;color:#555;margin-bottom:2px;">
+                      <label for="fgm-eps">Porosity (ε)</label>
+                      <span id="fgm-eps-out" style="font-weight:600;">0.20</span>
+                    </div>
+                    <input type="range" id="fgm-eps" min="0" max="0.5" step="0.01" value="0.2" class="form-range">
+                  </div>
+                  <div class="mb-2">
+                    <div style="display:flex;justify-content:space-between;font-size:12px;color:#555;margin-bottom:2px;">
+                      <label for="fgm-n">Grading index (n)</label>
+                      <span id="fgm-n-out" style="font-weight:600;">2.0</span>
+                    </div>
+                    <input type="range" id="fgm-n" min="0" max="10" step="0.1" value="2" class="form-range">
+                  </div>
+                  <div class="mb-2">
+                    <div style="display:flex;justify-content:space-between;font-size:12px;color:#555;margin-bottom:2px;">
+                      <label for="fgm-ah">Thickness ratio (a/h)</label>
+                      <span id="fgm-ah-out" style="font-weight:600;">10</span>
+                    </div>
+                    <input type="range" id="fgm-ah" min="5" max="20" step="1" value="10" class="form-range">
+                  </div>
+                  <div class="mb-2">
+                    <div style="display:flex;justify-content:space-between;font-size:12px;color:#555;margin-bottom:2px;">
+                      <label for="fgm-ab">Aspect ratio (a/b)</label>
+                      <span id="fgm-ab-out" style="font-weight:600;">1.0</span>
+                    </div>
+                    <input type="range" id="fgm-ab" min="0.5" max="2" step="0.1" value="1" class="form-range">
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="mb-2">
+                    <label style="font-size:12px;color:#555;display:block;margin-bottom:2px;">Sandwich layup</label>
+                    <select id="fgm-layup" class="form-select form-select-sm">
+                      <option value="111">1-1-1</option>
+                      <option value="121">1-2-1</option>
+                      <option value="212">2-1-2</option>
+                    </select>
+                  </div>
+                  <div class="mb-2">
+                    <label style="font-size:12px;color:#555;display:block;margin-bottom:2px;">Porosity model</label>
+                    <select id="fgm-model" class="form-select form-select-sm">
+                      <option value="I">Imperfect-I (even)</option>
+                      <option value="II">Imperfect-II (uneven)</option>
+                      <option value="III">Imperfect-III (linear)</option>
+                    </select>
+                  </div>
+                  <div class="mb-2">
+                    <label style="font-size:12px;color:#555;display:block;margin-bottom:2px;">Mode (m, n)</label>
+                    <select id="fgm-modeSel" class="form-select form-select-sm">
+                      <option value="1,1">1, 1</option>
+                      <option value="1,2">1, 2</option>
+                      <option value="2,1">2, 1</option>
+                      <option value="2,2">2, 2</option>
+                    </select>
+                  </div>
+                  <div class="mb-2">
+                    <div style="display:flex;justify-content:space-between;font-size:12px;color:#555;margin-bottom:2px;">
+                      <label for="fgm-amp">Deform amplitude</label>
+                    </div>
+                    <input type="range" id="fgm-amp" min="0" max="1" step="0.05" value="0.6" class="form-range">
+                  </div>
+                </div>
+              </div>
             </div>
-  
+
+            <!-- Frequency output + chart -->
+            <div class="col-lg-6">
+              <div style="background:#f6f6f6;border-radius:8px;padding:0.75rem 1rem;text-align:center;margin-bottom:12px;">
+                <div style="font-size:11px;color:#999;letter-spacing:0.04em;text-transform:uppercase;">Frequency parameter (ω)</div>
+                <div id="fgm-omega-out" style="font-size:30px;font-weight:600;margin-top:2px;">0.000</div>
+                <div id="fgm-delta-out" style="font-size:11px;color:#bbb;margin-top:2px;"></div>
+              </div>
+              <div style="position:relative;width:100%;height:180px;">
+                <canvas id="fgm-chart"></canvas>
+              </div>
+              <div style="display:flex;gap:14px;font-size:11px;color:#777;justify-content:center;margin-top:6px;">
+                <span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:#378ADD;display:inline-block;"></span>1-1-1</span>
+                <span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:#1D9E75;display:inline-block;"></span>1-2-1</span>
+                <span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:#D85A30;display:inline-block;"></span>2-1-2</span>
+              </div>
             </div>
+          </div>
+
+          <p style="font-size:11px;color:#bbb;border-top:1px solid #f0f0f0;padding-top:10px;margin-top:12px;margin-bottom:0;">
+            Solves the refined shear deformation theory eigenvalue problem (Hamilton's principle + Navier's solution) — not a curve fit.
+            Material: Al / Al₂O₃ (E<sub>m</sub>=70 GPa, E<sub>c</sub>=380 GPa, ρ<sub>m</sub>=2707, ρ<sub>c</sub>=3800 kg/m³, μ=1/3).
+          </p>
         </div>
+        <!-- ── end visualizer ── -->
 
+        <!-- Content blocks -->
         <div class="row justify-content-between gy-4 mt-4">
 
+          <!-- LEFT -->
           <div class="col-lg-8" data-aos="fade-up">
             <div class="portfolio-description">
+
               <h2>Free Vibration Analysis of Functionally Graded Material Sandwich Plate Using Refined Shear Deformation Theory</h2>
-              <p>
-                A Refined Shear Deformation Theory for Natural Frequency Analysis of Power Law Based Functionally Graded Sandwich Plate Rectangular FGM Sandwich plate of uniform thickness, comprising three layers, with each layer having ceramic and metal variations along the thickness direction.
-                Three various types of FGMC sandwich plate types viz. 1-1-1, 1-2-1, and 2-2-1 have been taken into consideration for conducting the free vibration study to analyze natural frequency. 
-                The material properties (i.e.,  ρ, E and 𝝁) of each layer of the sandwich plate and the volume gradation index (𝒏) are obtained considering power law.
-                The frequency parameter decreases as the volume gradation index (𝒏) increases, while it rises with higher thickness (𝒂/𝒉) and aspect (𝒂/𝒃)  ratios before plateauing for thin plates. The 1-2-1 model yields the highest frequency due to its thicker core, whereas the 1-1-1 model produces the lowest.</p>
+
+              <p class="text-muted mb-4" style="font-size:0.95rem; border-left:3px solid #e0e0e0; padding-left:12px;">
+                Predicting how manufacturing porosity shifts natural frequency — so structural margins can be set correctly from the start.
+              </p>
+
+              <div class="row g-3 mt-1">
+
+                <!-- Block 1: full width -->
+                <div class="col-12">
+                  <div style="background:#f8f8f8;border-radius:8px;padding:1.1rem 1.25rem;">
+                    <p style="font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#888;margin-bottom:6px;">The challenge</p>
+                    <p style="font-size:0.92rem;line-height:1.7;margin:0;color:#333;">
+                      Thermal barrier coatings in aerospace structures need to be ceramic on the hot side and metallic on the load-bearing side. A hard boundary between the two creates stress concentrations under thermal cycling that eventually delaminate the coating. Functionally Graded Materials (FGMs) solve this by continuously transitioning composition across the thickness — but manufacturing always introduces porosity, which shifts dynamic behavior in ways standard models don't capture.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Blocks 2+3 -->
+                <div class="col-md-6">
+                  <div style="background:#f8f8f8;border-radius:8px;padding:1.1rem 1.25rem;height:100%;">
+                    <p style="font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#888;margin-bottom:6px;">What I did</p>
+                    <p style="font-size:0.92rem;line-height:1.7;margin:0;color:#333;">
+                      Developed an analytical model for free vibration of porous FGM sandwich plates using Refined Shear Deformation Theory and Navier's solution. Modeled three porosity distribution patterns (even, uneven, linear uneven) across three sandwich thickness ratios (1-1-1, 1-2-1, 2-1-2) with material grading from aluminum to alumina following a power law. The interactive visualizer above solves the eigenvalue problem live — exactly as derived in the paper.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div style="background:#f8f8f8;border-radius:8px;padding:1.1rem 1.25rem;height:100%;">
+                    <p style="font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#888;margin-bottom:6px;">How performance was evaluated</p>
+                    <p style="font-size:0.92rem;line-height:1.7;margin:0;color:#333;">
+                      Results benchmarked against Thai &amp; Choi and Jin et al. — two independently published theories — across multiple aspect ratios and grading indices. Agreement confirmed in all cases. Published and indexed at ICAMM, available on ResearchGate and Google Scholar.
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Metric chips -->
+              <div class="d-flex flex-wrap gap-2 mt-4">
+                <span style="font-size:0.8rem;font-weight:600;background:#111;color:#fff;border-radius:20px;padding:5px 14px;">22.3% max frequency drop from porosity</span>
+                <span style="font-size:0.8rem;font-weight:500;background:#f0f0f0;color:#333;border-radius:20px;padding:5px 14px;">Validated vs 2 published theories</span>
+                <span style="font-size:0.8rem;font-weight:500;background:#f0f0f0;color:#333;border-radius:20px;padding:5px 14px;">1-2-1 highest stiffness retention</span>
+                <span style="font-size:0.8rem;font-weight:500;background:#f0f0f0;color:#333;border-radius:20px;padding:5px 14px;">Published · ICAMM 2023</span>
+              </div>
+
             </div>
           </div>
 
+          <!-- RIGHT sidebar -->
           <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
             <div class="portfolio-info">
-              <h3>Research information</h3>
+
+              <h3>Research info</h3>
               <ul>
-                <li><strong>Category</strong> Functionally Graded Material</li>
-                <li><strong>Project date</strong> Sep 2023</li>
-                <li><strong><a target="_blank" href="https://www.researchgate.net/publication/377982051_Free_Vibration_Analysis_of_Functionally_Graded_Material_Sandwich_Plate_Using_Refined_Shear_Deformation_Theory" title="More Details">Research Gate Link​</a></strong></li>
+                <li><strong>Category</strong> Materials &amp; Analysis</li>
+                <li><strong>Published</strong> Sep 2023 · ICAMM</li>
+                <li><strong>Links</strong>
+                  <a target="_blank" href="https://www.researchgate.net/publication/377982051_Free_Vibration_Analysis_of_Functionally_Graded_Material_Sandwich_Plate_Using_Refined_Shear_Deformation_Theory">ResearchGate</a>
+                </li>
               </ul>
+
+              <div class="mt-3">
+                <p style="font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#888;margin-bottom:8px;">Methods</p>
+                <div class="d-flex flex-wrap gap-1">
+                  <span style="font-size:0.75rem;background:#f0f0f0;color:#555;border-radius:4px;padding:3px 9px;">RSDT</span>
+                  <span style="font-size:0.75rem;background:#f0f0f0;color:#555;border-radius:4px;padding:3px 9px;">Navier solution</span>
+                  <span style="font-size:0.75rem;background:#f0f0f0;color:#555;border-radius:4px;padding:3px 9px;">MATLAB</span>
+                  <span style="font-size:0.75rem;background:#f0f0f0;color:#555;border-radius:4px;padding:3px 9px;">Power law grading</span>
+                  <span style="font-size:0.75rem;background:#f0f0f0;color:#555;border-radius:4px;padding:3px 9px;">Eigenvalue analysis</span>
+                </div>
+              </div>
+
             </div>
           </div>
 
-        </div>
-
+        </div><!-- end content row -->
       </div>
-
-    </section><!-- /Portfolio Details Section -->
-
+    </section>
   </main>
 
   <footer id="footer" class="footer dark-background">
-
     <div class="container footer-top">
       <div class="row gy-4">
         <div class="col-lg-5 col-md-12 footer-about">
           <a href="index.html" class="logo d-flex align-items-center">
             <img src="assets/img/Frame 2.png" class="img-fluid" alt="">
           </a>
-          <p><strong>Engineering the future, where the sky is no longer the limit.</strong></p>
           <div class="social-links d-flex mt-4">
             <a href="https://www.researchgate.net/profile/Saloni-Malviya">
-          <img src="assets/img/researchgate.svg" alt="ResearchGate" style="height: 24px;">
-        </a>
-        <a href="https://www.linkedin.com/in/saloni-malviya-815b79241/">
-          <i class="bi bi-linkedin"></i>
-        </a>
-        <a href="https://scholar.google.com/citations?user=07LBAHoAAAAJ&hl=en&oi=ao">
-          <img src="assets/img/gs.png" alt="Google Scholar" style="height: 24px;">
-        </a>
+              <img src="assets/img/researchgate.svg" alt="ResearchGate" style="height:24px;">
+            </a>
+            <a href="https://www.linkedin.com/in/saloni-malviya-815b79241/">
+              <i class="bi bi-linkedin"></i>
+            </a>
+            <a href="https://scholar.google.com/citations?user=07LBAHoAAAAJ&hl=en&oi=ao">
+              <img src="assets/img/gs.png" alt="Google Scholar" style="height:24px;">
+            </a>
           </div>
         </div>
-<div class="col-lg-2 col-6 footer-links">
-    <h4>Useful Links</h4>
-  <ul>
-    <li><a href="index.html#hero">Home</a></li>
-    <li><a href="index.html#about">About me</a></li>
-  </ul>
-</div>
-
-<div class="col-lg-2 col-6 footer-links">
-  <h4>Site Content</h4>
-  <ul>
-    <li><a href="index.html#technical-skills">Technical Skills</a></li>
-    <li><a href="index.html#portfolio">Portfolio</a></li>
-    <li><a href="index.html#engagement">Engagement</a></li>
-    <li><a href="index.html#impact">Impact</a></li>
-    <li><a href="index.html#contact">Contact</a></li>
-  </ul>
-</div>
-
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="index.html#hero">Home</a></li>
+            <li><a href="index.html#about">About me</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Site Content</h4>
+          <ul>
+            <li><a href="index.html#technical-skills">Technical Skills</a></li>
+            <li><a href="index.html#portfolio">Portfolio</a></li>
+            <li><a href="index.html#engagement">Engagement</a></li>
+            <li><a href="index.html#impact">Impact</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+        </div>
         <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
           <h4>Contact Me</h4>
           <p>1320 Beal Ave</p>
@@ -216,25 +315,17 @@
           <p class="mt-4"><strong>Phone:</strong> <span>+1 73427 25157</span></p>
           <p><strong>Email:</strong> <span>msaloni@umich.edu</span></p>
         </div>
-
       </div>
     </div>
-
     <div class="container copyright text-center mt-4">
       <p>© <span>Copyright</span> <strong class="px-1 sitename">Saloni Malviya</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-      </div>
     </div>
-
   </footer>
 
-  <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Preloader -->
   <div id="preloader"></div>
 
-  <!-- Vendor JS Files -->
+  <!-- Vendor JS -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
@@ -243,10 +334,68 @@
   <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-
-  <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
 
-</body>
+  <!-- FGM visualizer libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
+  <script>
+(function(){
+  var Em=70e9,rho_m=2707.0,nu=1.0/3.0,Ec=380e9,rho_c=3800.0;
+  function layerBounds(h,layup){var z1=-h/2,z4=h/2,z2,z3;if(layup==='111'){z2=-h/6;z3=h/6;}else if(layup==='121'){z2=-h/4;z3=h/4;}else if(layup==='212'){z2=-h/10;z3=h/10;}return[z1,z2,z3,z4];}
+  function Vz(z,z1,z2,z3,z4,n){if(z<=z2)return z2!==z1?Math.pow((z-z1)/(z2-z1),n):1.0;else if(z<=z3)return 1.0;else return z3!==z4?Math.pow((z-z4)/(z3-z4),n):1.0;}
+  function Tporous(z,Tm,Tc,z1,z2,z3,z4,n,eps,model){var V=Vz(z,z1,z2,z3,z4,n),base=Tm+(Tc-Tm)*V;if(eps===0)return base;if(model==='I'){if(z<=z2||z>=z3)return base-0.5*eps*(Tc+Tm);return base;}else if(model==='II'){if(z<=z2)return base-(eps/2)*(Tc+Tm)*(1-Math.abs(2*z-(z1+z2))/(z2-z1));else if(z>=z3)return base-(eps/2)*(Tc+Tm)*(1-Math.abs(2*z-(z3+z4))/(z4-z3));return base;}else if(model==='III'){if(z<=z2)return base-(eps/2)*(Tc+Tm)*(1-(z-z1)/(z1-z2));else if(z>=z3)return base-(eps/2)*(Tc+Tm)*(1-(z-z4)/(z3-z4));return base;}}
+  function integrateStiffness(h,layup,n,eps,model,npts){npts=npts||200;var bounds=layerBounds(h,layup),z1=bounds[0],z2=bounds[1],z3=bounds[2],z4=bounds[3],z=new Array(npts);for(var i=0;i<npts;i++)z[i]=z1+i*(z4-z1)/(npts-1);var E=new Array(npts),rho=new Array(npts),Q11=new Array(npts),Q12=new Array(npts),Q66=new Array(npts);for(i=0;i<npts;i++){E[i]=Tporous(z[i],Em,Ec,z1,z2,z3,z4,n,eps,model);rho[i]=Tporous(z[i],rho_m,rho_c,z1,z2,z3,z4,n,eps,model);Q11[i]=E[i]/(1-nu*nu);Q12[i]=nu*Q11[i];Q66[i]=E[i]/(2*(1+nu));}
+  function trapz(y){var s=0;for(var i=0;i<y.length-1;i++)s+=0.5*(y[i]+y[i+1])*(z[i+1]-z[i]);return s;}
+  function trapzPow(arr,p){return trapz(arr.map(function(v,i){return v*Math.pow(z[i],p);}));}
+  var A11=trapz(Q11),B11=trapzPow(Q11,1),D11=trapzPow(Q11,2),E11=trapzPow(Q11,3),F11=trapzPow(Q11,4),H11=trapzPow(Q11,6);
+  var A12=trapz(Q12),B12=trapzPow(Q12,1),D12=trapzPow(Q12,2),E12=trapzPow(Q12,3),F12=trapzPow(Q12,4),H12=trapzPow(Q12,6);
+  var A66=trapz(Q66),B66=trapzPow(Q66,1),D66=trapzPow(Q66,2),E66=trapzPow(Q66,3),F66=trapzPow(Q66,4),H66=trapzPow(Q66,6);
+  var A22=A11,B22=B11,D22=D11;
+  var A44raw=trapz(Q66),D44raw=trapzPow(Q66,2),F44raw=trapzPow(Q66,4);
+  var As44=(25/16)*A44raw-(25/(2*h*h))*D44raw+(25/Math.pow(h,4))*F44raw,As55=As44;
+  var Bs11=-0.25*B11+(5/(3*h*h))*E11,Bs12=-0.25*B12+(5/(3*h*h))*E12,Bs66=-0.25*B66+(5/(3*h*h))*E66,Bs22=Bs11;
+  var Ds11=-0.25*D11+(5/(3*h*h))*F11,Ds12=-0.25*D12+(5/(3*h*h))*F12,Ds66=-0.25*D66+(5/(3*h*h))*F66,Ds22=Ds11;
+  var Hs11=(1/16)*D11-(5/(6*h*h))*F11+(25/(9*Math.pow(h,4)))*H11;
+  var Hs12=(1/16)*D12-(5/(6*h*h))*F12+(25/(9*Math.pow(h,4)))*H12;
+  var Hs66=(1/16)*D66-(5/(6*h*h))*F66+(25/(9*Math.pow(h,4)))*H66,Hs22=Hs11;
+  var I0=trapz(rho),I1=trapzPow(rho,1),I2=trapzPow(rho,2),I3=trapzPow(rho,3),I4=trapzPow(rho,4),I5=trapzPow(rho,5);
+  return{A11:A11,A12:A12,A66:A66,A22:A22,B11:B11,B12:B12,B66:B66,B22:B22,D11:D11,D12:D12,D66:D66,D22:D22,Bs11:Bs11,Bs12:Bs12,Bs66:Bs66,Bs22:Bs22,Ds11:Ds11,Ds12:Ds12,Ds66:Ds66,Ds22:Ds22,Hs11:Hs11,Hs12:Hs12,Hs66:Hs66,Hs22:Hs22,As44:As44,As55:As55,I0:I0,I1:I1,I2:I2,I3:I3,I4:I4,I5:I5};}
+  function inv4(m){var A=[m[0].slice(),m[1].slice(),m[2].slice(),m[3].slice()],I=[[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]];for(var col=0;col<4;col++){var piv=col;for(var r=col+1;r<4;r++)if(Math.abs(A[r][col])>Math.abs(A[piv][col]))piv=r;var tmp=A[col];A[col]=A[piv];A[piv]=tmp;tmp=I[col];I[col]=I[piv];I[piv]=tmp;var d=A[col][col];for(var c=0;c<4;c++){A[col][c]/=d;I[col][c]/=d;}for(r=0;r<4;r++){if(r===col)continue;var f=A[r][col];for(c=0;c<4;c++){A[r][c]-=f*A[col][c];I[r][c]-=f*I[col][c];}}}return I;}
+  function matmul4(A,B){var C=[[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]];for(var i=0;i<4;i++)for(var j=0;j<4;j++){var s=0;for(var k=0;k<4;k++)s+=A[i][k]*B[k][j];C[i][j]=s;}return C;}
+  function smallestEigenvalue(A,iters){iters=iters||150;var Ainv=inv4(A),v=[1,1,1,1],lambda=0;for(var it=0;it<iters;it++){var w=[0,0,0,0];for(var i=0;i<4;i++)for(var j=0;j<4;j++)w[i]+=Ainv[i][j]*v[j];var norm=Math.sqrt(w[0]*w[0]+w[1]*w[1]+w[2]*w[2]+w[3]*w[3]);v=w.map(function(x){return x/norm;});lambda=norm;}return 1/lambda;}
+  function omegaNondim(a,b,h,layup,n,eps,model,m,nn){m=m||1;nn=nn||1;var S=integrateStiffness(h,layup,n,eps,model),alpha=m*Math.PI/a,beta=nn*Math.PI/b;var K=[[S.A11*alpha*alpha+S.A66*beta*beta,alpha*beta*(S.A12+S.A66),-alpha*(S.B11*alpha*alpha+(S.B12+2*S.B66)*beta*beta),-alpha*(S.Bs11*alpha*alpha+(S.Bs12+2*S.Bs66)*beta*beta)],[alpha*beta*(S.A12+S.A66),S.A66*alpha*alpha+S.A22*beta*beta,-beta*((S.B12+2*S.B66)*alpha*alpha+S.B22*beta*beta),-beta*((S.Bs12+2*S.Bs66)*alpha*alpha+S.Bs22*beta*beta)],[-alpha*(S.B11*alpha*alpha+(S.B12+2*S.B66)*beta*beta),-beta*((S.B12+2*S.B66)*alpha*alpha+S.B22*beta*beta),S.D11*Math.pow(alpha,4)+2*(S.D12+2*S.D66)*alpha*alpha*beta*beta+S.D22*Math.pow(beta,4),S.Ds11*Math.pow(alpha,4)+2*(S.Ds12+2*S.Ds66)*alpha*alpha*beta*beta+S.Ds22*Math.pow(beta,4)],[-alpha*(S.Bs11*alpha*alpha+(S.Bs12+2*S.Bs66)*beta*beta),-beta*((S.Bs12+2*S.Bs66)*alpha*alpha+S.Bs22*beta*beta),S.Ds11*Math.pow(alpha,4)+2*(S.Ds12+2*S.Ds66)*alpha*alpha*beta*beta+S.Ds22*Math.pow(beta,4),S.Hs11*Math.pow(alpha,4)+2*(S.Hs12+2*S.Hs66)*alpha*alpha*beta*beta+S.Hs22*Math.pow(beta,4)+S.As55*alpha*alpha+S.As44*beta*beta]];var M=[[S.I0,0,-alpha*S.I1,-alpha*S.I2],[0,S.I0,-beta*S.I1,-beta*S.I2],[-alpha*S.I1,-beta*S.I1,S.I0+S.I3*(alpha*alpha+beta*beta),S.I1+S.I5*(alpha*alpha+beta*beta)],[-alpha*S.I2,-beta*S.I2,S.I1+S.I5*(alpha*alpha+beta*beta),S.I0+S.I4*(alpha*alpha+beta*beta)]];var Minv=inv4(M),Amat=matmul4(Minv,K),lambda=smallestEigenvalue(Amat),omega=Math.sqrt(lambda);return omega*h*Math.sqrt(rho_m/Em);}
+  var els={eps:document.getElementById('fgm-eps'),n:document.getElementById('fgm-n'),ah:document.getElementById('fgm-ah'),ab:document.getElementById('fgm-ab'),model:document.getElementById('fgm-model'),layup:document.getElementById('fgm-layup'),modeSel:document.getElementById('fgm-modeSel'),amp:document.getElementById('fgm-amp')};
+  var out={eps:document.getElementById('fgm-eps-out'),n:document.getElementById('fgm-n-out'),ah:document.getElementById('fgm-ah-out'),ab:document.getElementById('fgm-ab-out'),omega:document.getElementById('fgm-omega-out'),delta:document.getElementById('fgm-delta-out'),modeBadge:document.getElementById('fgm-modeBadge')};
+  var epsLabels=[0,0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5];
+  var chart=new Chart(document.getElementById('fgm-chart'),{type:'line',data:{labels:epsLabels,datasets:[{label:'1-1-1',data:[],borderColor:'#378ADD',backgroundColor:'#378ADD',borderWidth:2,pointRadius:0,tension:0.3},{label:'1-2-1',data:[],borderColor:'#1D9E75',backgroundColor:'#1D9E75',borderWidth:2,pointRadius:0,tension:0.3},{label:'2-1-2',data:[],borderColor:'#D85A30',backgroundColor:'#D85A30',borderWidth:2,pointRadius:0,tension:0.3}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{title:{display:true,text:'Porosity coefficient (ε)',font:{size:10}},grid:{display:false},ticks:{font:{size:9}}},y:{title:{display:true,text:'Frequency parameter (ω)',font:{size:10}},beginAtZero:true,ticks:{font:{size:9}}}},animation:{duration:200}}});
+  var canvas=document.getElementById('fgm-three-canvas'),scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(40,1,0.1,100),renderer=new THREE.WebGLRenderer({canvas:canvas,antialias:true,alpha:true});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));scene.background=null;
+  var group=new THREE.Group();scene.add(group);
+  var dl=new THREE.DirectionalLight(0xffffff,1.0);dl.position.set(3,4,5);scene.add(dl);
+  var dl2=new THREE.DirectionalLight(0xffffff,0.5);dl2.position.set(-3,-2,-4);scene.add(dl2);
+  scene.add(new THREE.AmbientLight(0xffffff,0.65));
+  var SEG_X=28,SEG_Y=28,plateGroup=null,faceColor=0x378ADD,coreColor=0xD3D1C7;
+  function buildPlate(layup,ab){if(plateGroup){group.remove(plateGroup);plateGroup.traverse(function(o){if(o.geometry)o.geometry.dispose();if(o.material)o.material.dispose();});}plateGroup=new THREE.Group();var W=3.2,D=3.2/ab,H=0.5,bounds=layerBounds(H,layup),z1=bounds[0],z2=bounds[1],z3=bounds[2],z4=bounds[3];var layers=[{zlo:z1,zhi:z2,color:faceColor},{zlo:z2,zhi:z3,color:coreColor},{zlo:z3,zhi:z4,color:faceColor}],meshes=[];layers.forEach(function(layer){var thick=layer.zhi-layer.zlo,geo=new THREE.BoxGeometry(W,thick,D,SEG_X,1,SEG_Y),mat=new THREE.MeshStandardMaterial({color:layer.color,metalness:0.05,roughness:0.65,side:THREE.DoubleSide}),mesh=new THREE.Mesh(geo,mat);mesh.position.y=(layer.zlo+layer.zhi)/2;mesh.userData.zMid=(layer.zlo+layer.zhi)/2;plateGroup.add(mesh);meshes.push(mesh);var edges=new THREE.EdgesGeometry(geo,30),lineMat=new THREE.LineBasicMaterial({color:0xB4B2A9,transparent:true,opacity:0.5}),lines=new THREE.LineSegments(edges,lineMat);lines.position.y=mesh.position.y;plateGroup.add(lines);});plateGroup.userData.meshes=meshes;plateGroup.userData.W=W;plateGroup.userData.D=D;plateGroup.userData.H=H;group.add(plateGroup);return plateGroup;}
+  function deformPlate(m,nn,amp){if(!plateGroup)return;var W=plateGroup.userData.W,D=plateGroup.userData.D;plateGroup.userData.meshes.forEach(function(mesh){var pos=mesh.geometry.attributes.position,base=mesh.geometry.userData.basePos;if(!base){base=pos.array.slice();mesh.geometry.userData.basePos=base;}for(var i=0;i<pos.count;i++){var bx=base[i*3],by=base[i*3+1],bz=base[i*3+2],xn=(bx+W/2)/W,yn=(bz+D/2)/D,disp=Math.sin(m*Math.PI*xn)*Math.sin(nn*Math.PI*yn);pos.setY(i,by+disp*amp*0.45);}pos.needsUpdate=true;mesh.geometry.computeVertexNormals();});}
+  var isDragging=false,lastX=0,lastY=0,rotX=-0.35,rotY=0.6,zoom=1.0;
+  function updateCamera(){var r=6.5*zoom;camera.position.x=r*Math.sin(rotY)*Math.cos(rotX);camera.position.z=r*Math.cos(rotY)*Math.cos(rotX);camera.position.y=r*Math.sin(rotX)+0.3;camera.lookAt(0,0,0);}
+  canvas.addEventListener('pointerdown',function(e){isDragging=true;lastX=e.clientX;lastY=e.clientY;canvas.setPointerCapture(e.pointerId);});
+  canvas.addEventListener('pointerup',function(){isDragging=false;});
+  canvas.addEventListener('pointermove',function(e){if(!isDragging)return;var dx=e.clientX-lastX,dy=e.clientY-lastY;rotY-=dx*0.008;rotX=Math.max(-1.2,Math.min(1.2,rotX+dy*0.008));lastX=e.clientX;lastY=e.clientY;updateCamera();});
+  canvas.addEventListener('wheel',function(e){e.preventDefault();zoom=Math.max(0.5,Math.min(2.2,zoom+e.deltaY*0.001));updateCamera();},{passive:false});
+  function resizeRenderer(){var w=canvas.clientWidth,h=canvas.clientHeight;if(w===0||h===0)return;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}
+  function animate(){requestAnimationFrame(animate);resizeRenderer();renderer.render(scene,camera);}
+  function update(){var eps=parseFloat(els.eps.value),n=parseFloat(els.n.value),ah=parseFloat(els.ah.value),ab=parseFloat(els.ab.value),model=els.model.value,layup=els.layup.value,amp=parseFloat(els.amp.value),modeParts=els.modeSel.value.split(','),mm=parseInt(modeParts[0]),nn=parseInt(modeParts[1]);
+  out.eps.textContent=eps.toFixed(2);out.n.textContent=n.toFixed(1);out.ah.textContent=ah.toFixed(0);out.ab.textContent=ab.toFixed(1);out.modeBadge.textContent='mode m='+mm+', n='+nn;
+  var a=1.0,b=a/ab,h=a/ah,w0=omegaNondim(a,b,h,layup,n,0,model,mm,nn),w=omegaNondim(a,b,h,layup,n,eps,model,mm,nn);
+  out.omega.textContent=w.toFixed(4);var pctDrop=w0>0?(w0-w)/w0*100:0;out.delta.textContent=(pctDrop>=0?'−':'+')+Math.abs(pctDrop).toFixed(1)+'% vs. nonporous (ε=0)';
+  buildPlate(layup,ab);deformPlate(mm,nn,amp);
+  ['111','121','212'].forEach(function(lp,idx){var data=epsLabels.map(function(e){return Math.round(omegaNondim(a,b,h,lp,n,e,model,mm,nn)*10000)/10000;});chart.data.datasets[idx].data=data;});chart.update('none');}
+  Object.keys(els).forEach(function(k){els[k].addEventListener('input',update);els[k].addEventListener('change',update);});
+  updateCamera();update();animate();
+})();
+  </script>
+</body>
 </html>
