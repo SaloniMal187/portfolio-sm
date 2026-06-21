@@ -142,32 +142,139 @@
             <div class="swiper-pagination"></div>
         </div>
 
-        <div class="row justify-content-between gy-4 mt-4">
-
-          <div class="col-lg-8" data-aos="fade-up">
-            <div class="portfolio-description">
-                <h2>
-                    Model Reference Adaptive Control for Spacecraft Attitude Tracking 
-                </h2>
-              <p>
-                Synthesized the MRAC control law with a Variable Structure Controller (VSC) and utilized time-varying adaptive gains to compensate for parametric inertia uncertainties and actuator misalignment. 
-To ensure stability, derived adaptation laws via Lyapunov analysis, guaranteeing bounded errors and asymptotic convergence.
-MRAC design successfully stabilized the system, achieving a settling time of 28 seconds and a steady-state error of just 1.2 arcseconds.
-              </p>
-
-            </div>
+        
+<div class="row justify-content-between gy-4 mt-4">
+ 
+  <!-- LEFT: Main content -->
+  <div class="col-lg-8" data-aos="fade-up">
+    <div class="portfolio-description">
+ 
+      <!-- Heading — kept exactly as current -->
+      <h2>Model Reference Adaptive Control for Spacecraft Attitude Tracking</h2>
+ 
+      <!-- Hook line -->
+      <p class="text-muted mb-4" style="font-size: 0.95rem; border-left: 3px solid #e0e0e0; padding-left: 12px;">
+        Fixed-gain controllers assume the spacecraft you designed is the spacecraft you fly. MRAC doesn't need that assumption.
+      </p>
+ 
+      <!-- Four-block grid -->
+      <div class="row g-3 mt-1">
+ 
+        <!-- Block 1: The challenge — full width -->
+        <div class="col-12">
+          <div style="background:#f8f8f8; border-radius:8px; padding:1.1rem 1.25rem;">
+            <p style="font-size:0.7rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#888; margin-bottom:6px;">The challenge</p>
+            <p style="font-size:0.92rem; line-height:1.7; margin:0; color:#333;">
+              A spacecraft's inertia matrix changes in flight — fuel burns off, solar panels extend, appendages flex. PID and LQR controllers are tuned to a nominal model and lose stability when reality drifts from it. For high-precision pointing missions (Earth observation, deep-space comms), that drift isn't acceptable. The controller has to work even when the model is wrong.
+            </p>
           </div>
-
-          <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
-            <div class="portfolio-info">
-              <h3>Project information</h3>
-              <ul>
-                <li><strong>Project date</strong> Jan 2025 - Apr 2025</li>
-              </ul>
-            </div>
-          </div>
-
         </div>
+ 
+        <!-- Blocks 2+3 side by side -->
+        <div class="col-md-6">
+          <div style="background:#f8f8f8; border-radius:8px; padding:1.1rem 1.25rem; height:100%;">
+            <p style="font-size:0.7rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#888; margin-bottom:6px;">What I did</p>
+            <p style="font-size:0.92rem; line-height:1.7; margin:0; color:#333;">
+              Synthesized an MRAC control law combined with a Variable Structure Controller, using time-varying adaptive gains derived from Lyapunov stability analysis. The adaptation laws guarantee bounded errors and asymptotic convergence regardless of inertia uncertainty — not just in the nominal case. Implemented in MATLAB and benchmarked head-to-head against tuned PID and LQR under two scenarios: nominal and a 3× inertia mismatch.
+            </p>
+          </div>
+        </div>
+ 
+        <div class="col-md-6">
+          <div style="background:#f8f8f8; border-radius:8px; padding:1.1rem 1.25rem; height:100%;">
+            <p style="font-size:0.7rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#888; margin-bottom:6px;">How performance was evaluated</p>
+            <p style="font-size:0.92rem; line-height:1.7; margin:0; color:#333;">
+              Four metrics tracked across both scenarios: settling time (10 arcsecond bound), max overshoot, steady-state error, and control effort. Under nominal conditions all three controllers worked. Under large inertia uncertainty, PID and LQR both diverged into sustained oscillations and never recovered within the simulation window. MRAC adapted in real time and maintained control throughout.
+            </p>
+          </div>
+        </div>
+ 
+      </div><!-- end four-block grid -->
+ 
+      <!-- Comparison table -->
+      <div class="mt-4">
+        <p style="font-size:0.7rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#888; margin-bottom:10px;">Controller comparison — under inertia uncertainty</p>
+        <div style="overflow-x:auto;">
+          <table style="width:100%; font-size:0.85rem; border-collapse:collapse;">
+            <thead>
+              <tr style="border-bottom:2px solid #e0e0e0;">
+                <th style="text-align:left; padding:8px 10px; color:#888; font-weight:500;">Metric</th>
+                <th style="text-align:center; padding:8px 10px; color:#111; font-weight:600;">MRAC</th>
+                <th style="text-align:center; padding:8px 10px; color:#888; font-weight:500;">PID</th>
+                <th style="text-align:center; padding:8px 10px; color:#888; font-weight:500;">LQR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid #f0f0f0;">
+                <td style="padding:8px 10px; color:#555;">Settling time</td>
+                <td style="padding:8px 10px; text-align:center; font-weight:600; color:#111;">28 s</td>
+                <td style="padding:8px 10px; text-align:center; color:#c0392b;">Failed</td>
+                <td style="padding:8px 10px; text-align:center; color:#c0392b;">Failed</td>
+              </tr>
+              <tr style="border-bottom:1px solid #f0f0f0;">
+                <td style="padding:8px 10px; color:#555;">Steady-state error</td>
+                <td style="padding:8px 10px; text-align:center; font-weight:600; color:#111;">1.2″</td>
+                <td style="padding:8px 10px; text-align:center; color:#c0392b;">60″</td>
+                <td style="padding:8px 10px; text-align:center; color:#c0392b;">160″</td>
+              </tr>
+              <tr style="border-bottom:1px solid #f0f0f0;">
+                <td style="padding:8px 10px; color:#555;">Max overshoot</td>
+                <td style="padding:8px 10px; text-align:center; font-weight:600; color:#111;">250″</td>
+                <td style="padding:8px 10px; text-align:center; color:#c0392b;">&gt;1000″</td>
+                <td style="padding:8px 10px; text-align:center; color:#c0392b;">&gt;1500″</td>
+              </tr>
+              <tr>
+                <td style="padding:8px 10px; color:#555;">Control effort</td>
+                <td style="padding:8px 10px; text-align:center; font-weight:600; color:#111;">65</td>
+                <td style="padding:8px 10px; text-align:center; color:#888;">110</td>
+                <td style="padding:8px 10px; text-align:center; color:#888;">60</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+ 
+      <!-- Metric chips -->
+      <div class="d-flex flex-wrap gap-2 mt-4">
+        <span style="font-size:0.8rem; font-weight:600; background:#111; color:#fff; border-radius:20px; padding:5px 14px;">28s settling time</span>
+        <span style="font-size:0.8rem; font-weight:500; background:#f0f0f0; color:#333; border-radius:20px; padding:5px 14px;">1.2″ steady-state error</span>
+        <span style="font-size:0.8rem; font-weight:500; background:#f0f0f0; color:#333; border-radius:20px; padding:5px 14px;">PID & LQR both diverged</span>
+        <span style="font-size:0.8rem; font-weight:500; background:#f0f0f0; color:#333; border-radius:20px; padding:5px 14px;">Lyapunov stability proven</span>
+      </div>
+ 
+    </div>
+  </div>
+ 
+  <!-- RIGHT: Info sidebar -->
+  <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
+    <div class="portfolio-info">
+ 
+      <h3>Project info</h3>
+      <ul>
+        <li><strong>Course</strong> AERO 573 — Advanced GNC</li>
+        <li><strong>Institution</strong> University of Michigan</li>
+        <li><strong>Category</strong> Controls & Dynamics</li>
+        <li><strong>Duration</strong> Jan 2025 – Apr 2025</li>
+        <li><strong>Role</strong> Individual project</li>
+      </ul>
+ 
+      <!-- Tool tags -->
+      <div class="mt-3">
+        <p style="font-size:0.7rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#888; margin-bottom:8px;">Tools</p>
+        <div class="d-flex flex-wrap gap-1">
+          <span style="font-size:0.75rem; background:#f0f0f0; color:#555; border-radius:4px; padding:3px 9px;">MATLAB</span>
+          <span style="font-size:0.75rem; background:#f0f0f0; color:#555; border-radius:4px; padding:3px 9px;">Simulink</span>
+          <span style="font-size:0.75rem; background:#f0f0f0; color:#555; border-radius:4px; padding:3px 9px;">Lyapunov analysis</span>
+          <span style="font-size:0.75rem; background:#f0f0f0; color:#555; border-radius:4px; padding:3px 9px;">Quaternion kinematics</span>
+          <span style="font-size:0.75rem; background:#f0f0f0; color:#555; border-radius:4px; padding:3px 9px;">VSC</span>
+        </div>
+      </div>
+ 
+    </div>
+  </div>
+ 
+</div><!-- end row -->
+
 
       </div>
 
