@@ -4,8 +4,12 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Saloni Malviya — Aerospace Engineer</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <meta name="description" content="Portfolio of Saloni Malviya, MS Aerospace Engineering at the University of Michigan — spacecraft control, structural dynamics, FEA, simulation, and mechatronics.">
+  <meta name="keywords" content="Saloni Malviya, aerospace engineer, mechanical engineering, controls, FEA, simulation, MRAC, NMPC, spacecraft, portfolio">
+  <meta property="og:title" content="Saloni Malviya — Aerospace Engineer">
+  <meta property="og:description" content="MS Aerospace Engineering · University of Michigan. Spacecraft control, structural dynamics, FEA, and mechatronics.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/img/Saloni.jpg">
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -71,7 +75,16 @@
       pointer-events: none;
     }
     .mission-title { color:#fff; text-shadow:0 0 25px rgba(153,187,225,0.4); z-index:3; position:relative; }
-    .typewriter-text { color:#99bbe1; border-right:3px solid #99bbe1; z-index:3; }
+    .typewriter-text { color:#99bbe1; border-right:3px solid #99bbe1; z-index:3; animation: cursor-blink 0.9s step-end infinite; }
+    @keyframes cursor-blink { 0%,100% { border-color:#99bbe1; } 50% { border-color:transparent; } }
+
+    /* ── HERO → ABOUT FADE BRIDGE ── */
+    .hero-fade-bridge {
+      height: 120px;
+      margin-top: -1px;
+      background: linear-gradient(to bottom, #020617 0%, rgba(2,6,23,0.6) 40%, #ffffff 100%);
+      pointer-events: none;
+    }
 
     /* ── SAT OVERLAY ── */
     .sat-data-overlay {
@@ -665,7 +678,7 @@
         </div>
         <div class="col-lg-2 col-6 footer-links">
           <h4>Useful Links</h4>
-          <ul><li><a href="#">Home</a></li><li><a href="#scroll-about-me">About me</a></li></ul>
+          <ul><li><a href="#hero">Home</a></li><li><a href="#scroll-about-me">About me</a></li></ul>
         </div>
         <div class="col-lg-2 col-6 footer-links">
           <h4>Site Content</h4>
