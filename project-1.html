@@ -135,28 +135,80 @@
 
         <div class="row justify-content-between gy-4 mt-4">
 
-          <div class="col-lg-8" data-aos="fade-up">
-            <div class="portfolio-description">
-                <h2>
-                    Hohmann Transfer GUI
-                </h2>
-              <p>
-                Calculating the angular momentum for the orbits being traversed by the space vehicle and the orbital speed i.e. the delta-v required to boost the vehicle onto the next higher orbit when the space vehicle travels from the inner circle to the outer circle.  Without the latter delta-v burn, the spacecraft would remain on the Hohmann transfer ellipse and return to its initial point.
-              </p>
+  <!-- LEFT: Main content -->
+  <div class="col-lg-8" data-aos="fade-up">
+    <div class="portfolio-description">
 
-            </div>
+      <h2>Hohmann Transfer GUI</h2>
+
+      <p class="text-muted mb-4" style="font-size: 0.95rem; border-left: 3px solid #e0e0e0; padding-left: 12px;">
+        An interactive tool that turns the orbital-mechanics behind a two-burn Hohmann transfer into a point-and-click delta-V calculator.
+      </p>
+
+      <div class="row g-3 mt-1">
+
+        <div class="col-12">
+          <div style="background:#f8f8f8; border-radius:8px; padding:1.1rem 1.25rem;">
+            <p style="font-size:0.7rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#888; margin-bottom:6px;">Overview</p>
+            <p style="font-size:0.92rem; line-height:1.7; margin:0; color:#333;">
+              A Hohmann transfer moves a spacecraft between two coplanar circular orbits along an elliptical path. Reaching the higher orbit takes two burns — one to enter the transfer ellipse, and a second at apoapsis to circularise. Without the second delta-V burn, the spacecraft stays on the transfer ellipse and coasts back to its starting point.
+            </p>
           </div>
-
-          <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
-            <div class="portfolio-info">
-              <h3>Project information</h3>
-              <ul>
-                <li><strong>Project date</strong> Jun, 2023 - Aug, 2023</li>
-              </ul>
-            </div>
-          </div>
-
         </div>
+
+        <div class="col-md-6">
+          <div style="background:#f8f8f8; border-radius:8px; padding:1.1rem 1.25rem; height:100%;">
+            <p style="font-size:0.7rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#888; margin-bottom:6px;">What I built</p>
+            <p style="font-size:0.92rem; line-height:1.7; margin:0; color:#333;">
+              A MATLAB GUI that computes the angular momentum of each orbit and the orbital speeds the vehicle travels at, then derives the delta-V required for each burn to raise the vehicle from the inner to the outer orbit.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div style="background:#f8f8f8; border-radius:8px; padding:1.1rem 1.25rem; height:100%;">
+            <p style="font-size:0.7rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#888; margin-bottom:6px;">How it works</p>
+            <p style="font-size:0.92rem; line-height:1.7; margin:0; color:#333;">
+              The user sets the initial and target orbits; the tool solves the transfer geometry and reports the per-burn and total delta-V interactively, making the manoeuvre easy to reason about visually.
+            </p>
+          </div>
+        </div>
+
+      </div><!-- end block grid -->
+
+      <div class="d-flex flex-wrap gap-2 mt-4">
+        <span style="font-size:0.8rem; font-weight:600; background:#111; color:#fff; border-radius:20px; padding:5px 14px;">Interactive delta-V calculator</span>
+        <span style="font-size:0.8rem; font-weight:500; background:#f0f0f0; color:#333; border-radius:20px; padding:5px 14px;">Two-burn transfer</span>
+        <span style="font-size:0.8rem; font-weight:500; background:#f0f0f0; color:#333; border-radius:20px; padding:5px 14px;">Orbital mechanics</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- RIGHT: Info sidebar -->
+  <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
+    <div class="portfolio-info">
+
+      <h3>Project info</h3>
+      <ul>
+        <li><strong>Category</strong> Controls &amp; Dynamics</li>
+        <li><strong>Duration</strong> Jun 2023 – Aug 2023</li>
+        <li><strong>Type</strong> Personal project</li>
+      </ul>
+
+      <div class="mt-3">
+        <p style="font-size:0.7rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#888; margin-bottom:8px;">Tools</p>
+        <div class="d-flex flex-wrap gap-1">
+          <span style="font-size:0.75rem; background:#f0f0f0; color:#555; border-radius:4px; padding:3px 9px;">MATLAB</span>
+          <span style="font-size:0.75rem; background:#f0f0f0; color:#555; border-radius:4px; padding:3px 9px;">Orbital Mechanics</span>
+          <span style="font-size:0.75rem; background:#f0f0f0; color:#555; border-radius:4px; padding:3px 9px;">GUI</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- end row -->
 
       </div>
 
