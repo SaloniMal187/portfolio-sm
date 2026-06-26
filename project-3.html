@@ -142,23 +142,23 @@
   <div class="col-lg-8" data-aos="fade-up">
     <div class="portfolio-description">
  
-      <!-- Heading — kept exactly as current -->
+      <!-- Heading -->
       <h2>Vibration Suppression for Urban Air Mobility (UAM) Aircraft Using Nonlinear Model Predictive Control (NMPC)</h2>
  
       <!-- Hook line -->
       <p class="text-muted mb-4" style="font-size: 0.95rem; border-left: 3px solid #e0e0e0; padding-left: 12px;">
-        LQR needed 26° of elevator deflection to stabilize a UAM aircraft. NMPC did it with 12° — half the mechanical stress, every maneuver.
+        LQR needed 26° of elevator deflection to stabilize a UAM aircraft. NMPC did it with 12°, half the mechanical stress, every maneuver.
       </p>
  
       <!-- Four-block grid -->
       <div class="row g-3 mt-1">
  
-        <!-- Block 1: The challenge — full width -->
+        <!-- Block 1: The challenge (full width) -->
         <div class="col-12">
           <div style="background:#f8f8f8; border-radius:8px; padding:1.1rem 1.25rem;">
             <p style="font-size:0.7rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#888; margin-bottom:6px;">The challenge</p>
             <p style="font-size:0.92rem; line-height:1.7; margin:0; color:#333;">
-              UAM vehicles face aeroelastic wing vibrations that fatigue airframes and degrade ride quality. Standard controllers like LQR compensate with large actuator deflections — which creates its own mechanical stress problem. The goal was to suppress vibration while simultaneously reducing the control effort required, using a controller that explicitly accounts for the aircraft's nonlinear dynamics and actuator limits rather than approximating them away.
+              UAM vehicles face aeroelastic wing vibrations that fatigue airframes and degrade ride quality. Standard controllers like LQR compensate with large actuator deflections, which creates its own mechanical stress problem. The goal was to suppress vibration while simultaneously reducing the control effort required, using a controller that explicitly accounts for the aircraft's nonlinear dynamics and actuator limits rather than approximating them away.
             </p>
           </div>
         </div>
@@ -168,7 +168,7 @@
           <div style="background:#f8f8f8; border-radius:8px; padding:1.1rem 1.25rem; height:100%;">
             <p style="font-size:0.7rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#888; margin-bottom:6px;">What I did</p>
             <p style="font-size:0.92rem; line-height:1.7; margin:0; color:#333;">
-              Developed a high-fidelity 6-DOF rigid-body model incorporating aerodynamic forces and gyroscopic rotor coupling. Used quaternion-based attitude representation (13 states) to eliminate gimbal lock singularities during dynamic flight. Implemented an NMPC framework that explicitly manages system nonlinearities and enforces state and actuator constraints at each prediction step — compared directly against a tuned LQR baseline on the same model.
+              Developed a high-fidelity 6-DOF rigid-body model incorporating aerodynamic forces and gyroscopic rotor coupling. Used quaternion-based attitude representation (13 states) to eliminate gimbal lock singularities during dynamic flight. Implemented an NMPC framework that explicitly manages system nonlinearities and enforces state and actuator constraints at each prediction step, compared directly against a tuned LQR baseline on the same model.
             </p>
           </div>
         </div>
@@ -186,7 +186,7 @@
  
       <!-- Visual comparison bar -->
       <div class="mt-4">
-        <p style="font-size:0.7rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#888; margin-bottom:12px;">Peak elevator deflection — NMPC vs LQR</p>
+        <p style="font-size:0.7rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#888; margin-bottom:12px;">Peak elevator deflection: NMPC vs LQR</p>
         <div style="margin-bottom:10px;">
           <div style="display:flex; align-items:center; gap:12px; margin-bottom:6px;">
             <span style="font-size:0.8rem; color:#111; font-weight:600; width:50px;">NMPC</span>

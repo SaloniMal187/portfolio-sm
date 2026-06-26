@@ -16,13 +16,22 @@
     background-color: #ffffff; /* Ensures the background is white */
   }
 
-  /* Forces images within the swiper to scale down */
+  /* Center each slide so wide images don't overflow */
+  .portfolio-details-slider .swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Forces images within the swiper to fit the screen */
   .swiper-slide img {
     max-height: 70vh !important;
-    width: auto !important; /* Maintains the original aspect ratio */
+    max-width: 100% !important; /* Never wider than the container */
+    width: auto !important;     /* Maintains the original aspect ratio */
+    height: auto !important;
     display: block;
-    margin: 0 auto; /* Centers the image horizontally */
-    object-fit: contain; /* Ensures the entire image is visible without cropping */
+    margin: 0 auto;             /* Centers the image horizontally */
+    object-fit: contain;        /* Shows the whole image without cropping */
   }
 </style>
   
