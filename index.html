@@ -168,7 +168,7 @@
       display: flex;
       justify-content: center;
       align-items: flex-start;
-        min-width: 220px;  
+      min-width: 220px;
     }
     .about-img-wrap img {
       width: 220px;
@@ -323,15 +323,14 @@
     <!-- ═══════════ ABOUT ═══════════ -->
     <section id="about" class="about section">
       <div class="container">
-          <div class="row gy-4 align-items-center" style="flex-wrap: nowrap;">
+          <div class="row gy-4 align-items-center">
 
-          <!-- Photo — circular, 220px, not full column -->
-          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <!-- Photo — left-aligned beside the text -->
+          <div class="col-lg-3 col-md-4 d-flex justify-content-md-start justify-content-center" data-aos="fade-up" data-aos-delay="200">
             <img src="assets/img/Saloni.jpg"
              alt="Saloni Malviya"
              class="img-fluid rounded-4 shadow"
-             style="width:100%; object-fit:cover;">
-          </div>
+             style="width:100%; max-width:240px; object-fit:cover;">
           </div>
 
           <!-- Text -->
