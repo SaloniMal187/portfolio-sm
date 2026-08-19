@@ -744,7 +744,7 @@ The problems that interest me most sit at the intersection of hardware constrain
         const az=sat.azimuth||sat.az_deg||0,count=data.above.length;
         nameEl.innerText=`TRACKING: ${sat.satname}`;
         statsEl.innerText=`ALT: ${Math.round(sat.satalt)} KM  |  AZ: ${Math.round(az)}°  |  ${count} ASSETS IN RANGE`;
-        if(humanEl)humanEl.innerText=`"${sat.satname}" is passing ~${Math.round(sat.satalt)} km above Ann Arbor right now — one of ${count} objects tracked overhead.`;
+        if(humanEl)humanEl.innerText=`"${sat.satname}" is passing ~${Math.round(sat.satalt)} km above Ann Arbor right now, one of ${count} objects tracked overhead.`;
       }else{
         nameEl.innerText="TRACKING: ISS (ZARYA)";
         statsEl.innerText="ALT: 420 KM  |  VEL: 7.66 KM/S";
