@@ -290,7 +290,7 @@
           <small id="sat-stats" style="color:#94a3b8;font-family:'Courier New',monospace;display:block;text-align:center;"></small>
           <div style="display:flex;justify-content:center;gap:18px;margin-top:10px;flex-wrap:wrap;">
             <span class="custom-tooltip" data-tooltip="Height above Earth's surface" style="font-size:0.7rem;">ⓘ ALT = Altitude</span>
-            <span class="custom-tooltip" data-tooltip="Direction the satellite is travelling (0°=North, 90°=East)" style="font-size:0.7rem;">ⓘ AZ = Azimuth</span>
+            <span class="custom-tooltip" data-tooltip="Latitude/longitude of the point on Earth directly beneath the satellite" style="font-size:0.7rem;">ⓘ POS = Ground track</span>
           </div>
           <div style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(153,187,225,0.2);text-align:center;">
             <p style="color:#94a3b8;font-size:0.72rem;margin:0;line-height:1.6;">
@@ -732,28 +732,35 @@ The problems that interest me most sit at the intersection of hardware constrain
   async function updateHeroSat(){
     const nameEl=document.getElementById('sat-name'),statsEl=document.getElementById('sat-stats'),humanEl=document.getElementById('sat-human');
     if(!nameEl||!statsEl)return;
-    const lat="42.2808",lng="-83.7430",alt="256",radius="70",cat="0";
+    const lat="42.2808",lng="-83.7430",alt="256",radius="30",cat="0";
     const n2yoUrl=`https://api.n2yo.com/rest/v1/satellite/above/${lat}/${lng}/${alt}/${radius}/${cat}/&apiKey=${apiKey}`;
-    const proxyUrl=`https://corsproxy.io/?${encodeURIComponent(n2yoUrl)}&t=${Date.now()}`;
-    try{
-      const response=await fetch(proxyUrl);
-      if(!response.ok)throw new Error(`HTTP ${response.status}`);
-      const data=await response.json();
-      if(data&&data.above&&data.above.length>0){
-        const sat=data.above[Math.floor(Math.random()*data.above.length)];
-        const az=sat.azimuth||sat.az_deg||0,count=data.above.length;
-        nameEl.innerText=`TRACKING: ${sat.satname}`;
-        statsEl.innerText=`ALT: ${Math.round(sat.satalt)} KM  |  AZ: ${Math.round(az)}°  |  ${count} ASSETS IN RANGE`;
-        if(humanEl)humanEl.innerText=`"${sat.satname}" is passing ~${Math.round(sat.satalt)} km above Ann Arbor right now, one of ${count} objects tracked overhead.`;
-      }else{
-        nameEl.innerText="TRACKING: ISS (ZARYA)";
-        statsEl.innerText="ALT: 420 KM  |  VEL: 7.66 KM/S";
-        if(humanEl)humanEl.innerText="The ISS orbits ~420 km above Earth, circling the planet every 90 minutes.";
-      }
-    }catch(err){
-      nameEl.innerText="SYSTEMS_NOMINAL";
-      statsEl.innerText="LOCAL_MODEL_ACTIVE";
-      if(humanEl)humanEl.innerText="Live feed unavailable — but satellites are always up there.";
+    // n2yo has no CORS, so route through a public proxy; try several in case one is down.
+    const proxies=[
+      u=>`https://api.codetabs.com/v1/proxy/?quest=${encodeURIComponent(u)}`,
+      u=>`https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
+      u=>`https://thingproxy.freeboard.io/fetch/${u}`
+    ];
+    let data=null;
+    for(const wrap of proxies){
+      try{
+        const res=await fetch(wrap(n2yoUrl),{cache:'no-store'});
+        if(!res.ok)continue;
+        const json=await res.json();
+        if(json&&json.above){data=json;break;}
+      }catch(err){/* proxy down — try the next one */}
+    }
+    if(data&&data.above&&data.above.length>0){
+      const sat=data.above[Math.floor(Math.random()*data.above.length)];
+      const count=data.above.length;
+      const ns=sat.satlat>=0?'N':'S',ew=sat.satlng>=0?'E':'W';
+      nameEl.innerText=`TRACKING: ${sat.satname}`;
+      statsEl.innerText=`ALT: ${Math.round(sat.satalt)} KM  |  ${Math.abs(sat.satlat).toFixed(1)}°${ns}, ${Math.abs(sat.satlng).toFixed(1)}°${ew}  |  ${count} ASSETS IN RANGE`;
+      if(humanEl)humanEl.innerText=`"${sat.satname}" is passing ~${Math.round(sat.satalt)} km above Ann Arbor right now, one of ${count} objects overhead.`;
+    }else{
+      // Live feed unreachable — show a sensible static readout instead of an error.
+      nameEl.innerText="TRACKING: ISS (ZARYA)";
+      statsEl.innerText="ALT: ~420 KM  |  VEL: 7.66 KM/S  |  ORBIT: ~90 MIN";
+      if(humanEl)humanEl.innerText="The ISS orbits about 420 km above Earth, circling the planet roughly every 90 minutes.";
     }
   }
 
@@ -790,7 +797,7 @@ The problems that interest me most sit at the intersection of hardware constrain
   document.addEventListener('DOMContentLoaded',()=>{
     typeEffect();
     updateHeroSat();
-    setInterval(updateHeroSat,60000);
+    setInterval(updateHeroSat,300000);
     initOrbitalCanvas();
   });
   </script>
